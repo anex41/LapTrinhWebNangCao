@@ -3,12 +3,12 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="jumbotron jumbotron-fluid">
         <div class="container text-center">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">Choose path that you want to go!</p>
+            <h1 class="display-4">Xin chào!</h1>
+            <p class="lead">Hãy chọn mục bạn muốn xem!</p>
             <hr class="my-4">
             <p class="lead">
-                <a id="btnBTL" href="./BTL/view/index.aspx" class="btn btn-primary">BTL</a>
-                <button id="btnBTTH" type="button" class="btn btn-primary">BTTH</button>
+                <a id="btnBTL" href="./BTL/view/index.aspx" class="btn btn-primary">Bài tập lớn</a>
+                <button id="btnBTTH" type="button" class="btn btn-primary">Bài tập thực hành</button>
             </p>
         </div>
     </div>
