@@ -1,8 +1,6 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BTL.master.cs" Inherits="LapTrinhWebNangCao.View.BTL.BTL" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="adminMaster.master.cs" Inherits="LapTrinhWebNangCao.View.BTL.view.admin.adminMaster" %>
 
 <%@ Register TagPrefix="tag" TagName="Login" Src="~/View/BTL/userControl/Login.ascx" %>
-<%@ Register TagPrefix="tag" TagName="Chat" Src="~/View/BTL/userControl/Chat.ascx" %>
-
 <!DOCTYPE html>
 
 <html>
@@ -11,7 +9,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:BundleReference runat="server" Path="~/Content/css2" />
+    <webopt:BundleReference runat="server" Path="~/Content/css3" />
     <link rel="shortcut icon" href="/../../Assets/logo.png" type="image/x-icon">
     <link rel="icon" href="/../../Assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" type='text/css' href="/Content/fontawesome-all.css" />
@@ -47,43 +45,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Trang chủ</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="news" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tin tức
-                        </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="news">
-                                <a class="dropdown-item" href="#">Tin Tức 1</a>
-                                <a class="dropdown-item" href="#">Tin Tức 2</a>
-                                <a class="dropdown-item" href="#">Tin Tức 3</a>
-                                <a class="dropdown-item" href="#">Tin Tức 4</a>
-                                <a class="dropdown-item" href="#">WoW! Thật nhiều tin tức</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="market" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mua / Bán
-                        </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="market">
-                                <a class="dropdown-item" href="#">Mua Nhà</a>
-                                <a class="dropdown-item" href="#">Bán Nhà</a>
-                                <a class="dropdown-item" href="#">Thuê Nhà</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="members" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Danh sách thành viên
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="members">
-                                <a class="dropdown-item" href="#">Thành Viên 1</a>
-                                <a class="dropdown-item" href="#">Thành Viên 2</a>
-                                <a class="dropdown-item" href="#">Thành Viên 3</a>
-                                <a class="dropdown-item" href="#">Thành Viên 4</a>
-                                <a class="dropdown-item" href="#">Thành Viên 5</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.html">Giới thiệu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Liên hệ</a>
-                        </li>
                     </ul>
                 </div>
                 <div runat="server" id="loginDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
@@ -101,9 +62,6 @@
         <div class="container-fluid body-content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
-        <div class="chatLayout w-25 mb-2 bg-primary text-white">
-            <tag:Chat ID="chat" runat="server" />
         </div>
         <div class="toastParent position-fixed d-flex flex-column p-4">
             <div class="toast bg-danger text-white toastError" role="alert" data-delay="5000" data-autohide="false">
@@ -139,5 +97,7 @@
     </form>
     <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script type="text/javascript" src="/signalr/hubs"></script>
 </body>
 </html>

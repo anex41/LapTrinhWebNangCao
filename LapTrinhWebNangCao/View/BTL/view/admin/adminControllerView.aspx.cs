@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace LapTrinhWebNangCao.View.BTL.view
 {
-    public partial class index : System.Web.UI.Page
+    public partial class adminControllerView : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
     }
 }

@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace LapTrinhWebNangCao.View.BTL.view
+namespace LapTrinhWebNangCao.View.BTL.view.client
 {
-    public partial class index : System.Web.UI.Page
+    public partial class clientControllerView : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
     }
 }

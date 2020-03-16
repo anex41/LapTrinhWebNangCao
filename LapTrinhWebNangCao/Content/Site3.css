@@ -44,15 +44,20 @@ footer {
     border-radius: 10px;
 }
 
-.chatContent {
+.chatContent{
     background-color: white;
-    height: 25vh;
-    border-radius: 10px;
-    overflow-y: scroll;
+    height: 75vh;
 }
 
-button:disabled{
-    background-color: #ff0000 !important;
+.chatInput{
+    height: 10vh;
+    background-color: #808080;
+}
+
+.chatInput textarea{
+    width:75%;
+    resize:none;
+    height: 10vh;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

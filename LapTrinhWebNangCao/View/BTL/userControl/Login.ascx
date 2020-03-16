@@ -43,7 +43,6 @@
             } else {
                 if (validateLength()) {
                     let data = { "username": $("#txtName").val().trim(), "password": $("#txtPassword").val() };
-                    let url = window.location.origin + "/Services/Login.asmx/UserLogin"
                     $.ajax({
                         type: "POST",
                         url: window.location.origin + "/Services/Login.asmx/UserLogin",
@@ -51,7 +50,13 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (response) {
-                            alert(JSON.stringify(response.d) + '');
+                            if (response.d == null) {
+                                $('#exampleModal').modal('hide')
+                                $('.toastError').toast('show');
+                            }
+                            else {
+                                createSession(data, (response.d).toString());
+                            }
                         }
                     });
                 } else {
@@ -105,5 +110,25 @@
             }
         }
         return result;
+    }
+
+    function redirectPage(str) {
+        if (str == "1") {
+            window.location.replace(window.location.origin + "/View/BTL/view/admin/adminControllerView");
+        } else if (str == "0") {
+            window.location.replace(window.location.origin + "/View/BTL/view/client/clientControllerView");
+        } else {
+            $('.toastError').toast('show');
+        }
+    }
+
+    function createSession(obj, str) {
+        $.ajax({
+            type: "POST",
+            url: window.location.origin + "/Services/Login.asmx/createSession",
+            data: JSON.stringify(obj),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).then(redirectPage(str));
     }
 </script>

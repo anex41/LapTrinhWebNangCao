@@ -57,6 +57,14 @@
                     <a href="./BTTH/bai15.htm" class="card-link">Đến Bài 15</a>
                 </div>
             </div>
+            <div class="card col-sm-4">
+                <div class="card-body" id="divBai16">
+                    <h5 class="card-title">Bài 16</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Bài tập tuần 2</h6>
+                    <p class="card-text">Server Side (Web Application project, Request, Response, Server, Configuration)</p>
+                    <a href="./BTTH/Bai16/FileChooser.htm" class="card-link">Đến Bài 16</a>
+                </div>
+            </div>
         </div>
     </section>
     <script>

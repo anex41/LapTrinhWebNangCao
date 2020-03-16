@@ -107,7 +107,7 @@
             if (x >= 30 && x <= 40) {
                 re = "Béo, cần giảm cân";
             }
-            if (x > 40) {
+            else {
                 re = "Rất béo, cần giảm cân ngay"
             }
             return re;
