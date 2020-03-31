@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 
 namespace LapTrinhWebNangCao.View.BTTH
 {
@@ -19,6 +20,28 @@ namespace LapTrinhWebNangCao.View.BTTH
             hoten = Request.Params["hoten"];
             ns = Request.Params["ns"];
             gender = Request.Params["gender"];
+
+
+            string XML = "<xml>" + "<stringA>" + hoten + "</stringA>" + "<stringB>" + ns + "</stringB>" + "<stringC>" + gender + "</stringC></xml>";
+            //?xml version =\"1.0\" encoding=\"utf-8\"?
+            Response.Buffer = true;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "text/xml";
+            Response.Write(XML);
+            Response.End();   //Stop all other output to the browser
+            //XmlDocument doc = new XmlDocument();
+            //doc.LoadXml(XML);
+            //Response.Clear();
+            ////Response.ContentType = "text/xml";
+            //Response.ContentEncoding = System.Text.Encoding.UTF8;
+
+            ////Response.Charset = "UTF-8";
+            //Response.Write(XML);
+            //Response.ContentType = "application/xml";
+            ////Response.Write(Server.HtmlEncode(doc));
+            //Response.End();
         }
+
     }
 }

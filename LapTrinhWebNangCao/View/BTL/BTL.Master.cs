@@ -11,7 +11,7 @@ namespace LapTrinhWebNangCao.View.BTL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
@@ -20,7 +20,8 @@ namespace LapTrinhWebNangCao.View.BTL
             {
                 loginDiv.Visible = false;
                 logoutDiv.Visible = true;
-            } else
+            }
+            else
             {
                 loginDiv.Visible = true;
                 logoutDiv.Visible = false;

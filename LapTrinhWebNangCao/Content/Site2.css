@@ -51,6 +51,40 @@ footer {
     overflow-y: scroll;
 }
 
+.adminChatParent::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.adminChatChild {
+    word-break: break-word;
+    width: 45%;
+    float: left;
+    text-align: justify;
+    background-color: tomato;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.clientChatParent::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.clientChatChild {
+    word-break: break-word;
+    width: 45%;
+    float: right;
+    text-align: justify;
+    background-color: cornflowerblue;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
 button:disabled{
     background-color: #ff0000 !important;
 }

@@ -1,4 +1,20 @@
-<form action="https://localhost:44322/View/BTTH/Bai15" method="post" id="form1" accept-charset="UTF-8">
+﻿<form action="https://localhost:44322/View/BTTH/Bai15" method="post" id="form1" accept-charset="UTF-8">
+    <span>Name</span>&nbsp; &nbsp;<input id="name1" type="text" name="hoten" />
+    <br />
+    <span>Date Of Birth</span>&nbsp; &nbsp;<input id="ns1" type="date" name="ns" />
+    <br />
+    <span>Gender</span>
+    <select id="gender1" name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+    <br />
+    <input id="Button1" type="button" onclick="sendForm1()" value="send" name="send" />
+    <input hidden id="Button1Submit" type="submit" value="send" name="send" />
+</form>
+
+<form action="https://localhost:44322/View/BTTH/Bai15" method="get" id="form1" accept-charset="UTF-8">
     <span>Name</span>&nbsp; &nbsp;<input id="name" type="text" name="hoten" />
     <br />
     <span>Date Of Birth</span>&nbsp; &nbsp;<input id="ns" type="date" name="ns" />
@@ -10,5 +26,36 @@
         <option value="Other">Other</option>
     </select>
     <br />
-    <input id="Button1" type="submit" value="send" name="send" />
+    <input id="Button2" type="submit" value="send" name="send" />
 </form>
+
+<script>
+    var name, ns, gender;
+    var button1Submit = document.getElementById("Button1Submit");
+
+    function sendForm1() {
+        var name = document.getElementById("name1").value;
+        var ns = document.getElementById("ns1").value;
+        var gender = document.getElementById("gender1").value;
+        if (name == "" || ns == "" || gender == "") {
+            alert("Chưa điền đầy đủ thông tin");
+        } else {
+            if (!checkdate(ns)) {
+                alert("Ngày sai quy định!");
+            } else {
+                button1Submit.click();
+            }
+        }
+    };
+
+    function checkdate(ns) {
+        var now = new Date();
+        var n = new Date(ns);
+        if (n < now) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+</script>

@@ -29,7 +29,6 @@
     <div class="col-sm-12 mb-3 text-right">
         <button type="button" class="btn btn-primary" id="btnLogin">Đăng nhập</button>
     </div>
-
 </div>
 <script>
     $(document).ready(function () {

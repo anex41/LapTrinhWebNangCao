@@ -12,7 +12,7 @@
             </p>
         </div>
     </div>
-    <section class="col-sm-12" id="sectionBTTH">
+    <section hidden class="col-sm-12" id="sectionBTTH">
         <div class="row">
             <div class="col-sm-11 text-center d-flex mb-2" style="justify-content: center;">
                 <h5>Bài tập theo tuần: </h5>
@@ -27,8 +27,7 @@
                 <option value="6">Tuần 6</option>
             </select>
             </div>
-            <span id="closeBTTH" class="col-sm-1 text-danger float-right" style="cursor: pointer;">
-                Đóng   
+            <span id="closeBTTH" class="col-sm-1 text-danger float-right" style="cursor: pointer;">Đóng   
                 <i class="fas fa-times-circle"></i>
             </span>
         </div>
@@ -65,15 +64,31 @@
                     <a href="./BTTH/Bai16/FileChooser.htm" class="card-link">Đến Bài 16</a>
                 </div>
             </div>
+            <div class="card col-sm-4">
+                <div class="card-body" id="divBai17">
+                    <h5 class="card-title">Bài 17</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Bài tập tuần 3</h6>
+                    <p class="card-text">Server side (Session, Application)</p>
+                    <a href="./BTTH/Bai17/Products.aspx" class="card-link">Đến Bài 17</a>
+                </div>
+            </div>
+            <div class="card col-sm-4">
+                <div class="card-body" id="divBai18">
+                    <h5 class="card-title">Bài 18</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Bài tập tuần 3</h6>
+                    <p class="card-text">Server side (Session, Application)</p>
+                    <a href="./BTTH/Bai18/Login.aspx" class="card-link">Đến Bài 18</a>
+                </div>
+            </div>
         </div>
     </section>
     <script>
         $(document).ready(function () {
-            $("#sectionBTTH").hide();
             $("#btnBTL").on("click", function () {
                 console.log("btl");
             });
             $("#btnBTTH").on("click", function () {
+                $("#sectionBTTH").removeAttr('hidden');
                 $("#sectionBTTH").show();
             });
             $("#closeBTTH").on("click", function () {

@@ -44,20 +44,66 @@ footer {
     border-radius: 10px;
 }
 
-.chatContent{
-    background-color: white;
+.chatContent {
+    background-color: #cccccc;
     height: 75vh;
+    overflow-y: scroll;
 }
 
-.chatInput{
+.chatInput {
     height: 10vh;
     background-color: #808080;
 }
 
-.chatInput textarea{
-    width:75%;
-    resize:none;
-    height: 10vh;
+    .chatInput textarea {
+        width: 75%;
+        resize: none;
+        height: 10vh;
+    }
+
+.adminChatParent::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.adminChatChild {
+    word-break: break-word;
+    width: 45%;
+    float: right;
+    text-align: justify;
+    background-color: tomato;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.clientChatParent::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.clientChatChild {
+    word-break: break-word;
+    width: 45%;
+    float: left;
+    text-align: justify;
+    background-color: cornflowerblue;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.userListMember {
+    margin: 10px;
+    display: block;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    color: red;
+    text-transform: capitalize;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

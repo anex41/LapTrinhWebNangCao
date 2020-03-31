@@ -1,5 +1,42 @@
 ﻿
 <form action="https://localhost:44322/View/BTTH/Bai16/SaveFile" method="post" enctype="multipart/form-data">
     <input type="file" name="UploadedFile" />
-    <input type="submit" name="btnsend" value="submit" />
+    <input id="buttonSubmit" type="submit" name="btnsend" value="submit" />
 </form>
+
+<script>
+    var url = window.location.href;
+    var id = getUrlVars()["id"];
+    var button = document.getElementById("buttonSubmit");
+    validate(id);
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+            vars[key] = value;
+        });
+        return vars;
+    };
+
+    function validate(code) {
+        if (code == undefined || id == "") {
+            return false;
+        } else {
+            if (code == -1) {
+                alert("File quá dung lượng cho phép");
+            }
+            if (code == 1) {
+                overwriteFile();
+            }
+        }
+    };
+
+    function overwriteFile() {
+        var x = confirm("Đã tồn tại, bạn có muốn ghi đè?");
+        if (x == true) {
+            button.click();
+        } else {
+            alert("Đã Hủy");
+        }
+    }
+</script>

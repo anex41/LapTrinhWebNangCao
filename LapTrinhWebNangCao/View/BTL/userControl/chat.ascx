@@ -37,27 +37,35 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/Scripts/jquery.signalR-2.2.2.min.js"></script>
+<script type="text/javascript" src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
 <script type="text/javascript" src="/signalr/hubs"></script>
 <script>
     $(document).ready(function () {
         var name;
         var message;
+        var role = "clientChat";
         var chat = $.connection.MyHub;
-        $("#setClient").on("click", function () {
-            $('#chatClientName').html("Người dùng: " + $('#chatName').val());
-            name = $('#chatName').val();
-            $("#registerClientDiv").hide();
-            $('#chatClientDiv').removeAttr('hidden');
-        });
+
+        chat.client.addChatMessage = function (name, message, role, email) {
+            message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            $('#chatContent').append("<div class=\"w-100 mt-1 " + role + "Parent\"><div class=\"" + role + "Child\">" + message + "</div></div>");
+            $('#bottomChatContent').remove();
+            $('#chatContent').append("<div id=\"bottomChatContent\"></div>");
+            divscrolldown();
+        };
+
         $("#open").on("click", function () {
             $("#open").hide();
             $('#registerClientDiv').removeAttr('hidden');
         });
-        chat.client.broadcastMessage = function (name, message) {
-            // Add the message to the page.
-            $('#chatContent').append("<p class=\"bg-success\">" + message + "</p>");
-        };
+
+        //chat.client.broadcastMessage = function (name, message, role) {
+        //    // Add the message to the page.
+        //    $('#chatContent').append("<div class=\"w-100 mt-1 " + role + "Parent\"><div class=\"" + role + "Child\">" + message + "</div></div>");
+        //    $('#bottomChatContent').remove();
+        //    $('#chatContent').append("<div id=\"bottomChatContent\"></div>");
+        //    divscrolldown();
+        //};
 
         $.connection.hub.start().done(function () {
             $('#sendMessage').click(function () {
@@ -68,26 +76,30 @@
                 message = $('#messageContent').val();
                 if (message.length > 0 || message !== null) {
                     // Call the Send method on the hub.
-                    chat.server.send(name, message);
+                    chat.server.sendMessage(name, message, role, email);
                     // Clear text box and reset focus for next comment.
                     $('#messageContent').val('').focus();
-                    divscrolldown();
+                    //divscrolldown();
+
                 }
                 else {
-                    chat.server.send(name, 'Không điền gì à Địt mẹ m');
-                    $('#messageContent').val('').focus();
-                    divscrolldown();
+                    return;
                 }
+            });
+
+            $("#setClient").on("click", function () {
+                $('#chatClientName').html("Người dùng: " + $('#chatName').val());
+                name = $('#chatName').val();
+                email = $('#chatEmail').val();
+                $("#registerClientDiv").hide();
+                $('#chatClientDiv').removeAttr('hidden');
+                chat.server.join(email);
             });
         });
     });
 
     function divscrolldown() {
-        setTimeout(function () {
-            $('#chatContent').animate({
-                scrollTop: $("#chatContent").offset().top
-            }, 500);
-
-        }, 200)
-    };
+        var bottomDiv = document.getElementById("bottomChatContent");
+        bottomDiv.scrollIntoView({ behavior: "smooth" });
+    }
 </script>

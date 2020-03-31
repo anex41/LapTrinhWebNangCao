@@ -45,7 +45,7 @@
         <hr style="background-color: black;" />
         &copy; <%: DateTime.Now.Year %> - My ASP.NET Application
     </footer>--%>
-    <div class="toastParent position-absolute w-100 d-flex flex-column p-4" style="top:0;">
+    <div class="toastParent position-absolute w-100 d-flex flex-column p-4" style="top: 0;">
         <div class="toast ml-auto bg-danger text-white toastError w-25" role="alert" data-delay="5000" data-autohide="true">
             <div class="toast-header">
                 <strong class="mr-auto text-danger">Lỗi</strong>
