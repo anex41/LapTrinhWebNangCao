@@ -54,8 +54,7 @@
     </div>
     <div style="position: fixed; bottom: 0; left: 0;" class="col-sm-3">
         <form action="ViewCart.aspx">
-            <input hidden id="AddToCartParameter" name="AddToCartParameter" value="" />
-            <input hidden id="Button1" type="button" onclick="sendForm1()" value="send" name="send" />
+            <input hidden id="AddToCartParameter" name="AddToCartParameter" value=""/>
             <input class="btn btn-success d-block m-auto" id="Button1Submit" type="submit" value="Xác nhận giỏ hàng" name="send" />
         </form>
     </div>
@@ -65,9 +64,17 @@
         var tempObj = {};
         $(document).ready(function () {
             $("#txtbtn").on("click", function () {
-                obj.amount = $("#productAmount").val();
-                addToLst(obj);
-                addToSession(lstObj);
+                if ($("#productAmount").val() == null || $("#productAmount").val() == "") {
+                    $('.toastSucceed').toast('hide');
+                    $('.toastError').toast('show');
+                }
+                else {
+                    obj.amount = $("#productAmount").val();
+                    addToLst(obj);
+                    addToSession(lstObj);
+                    $('.toastError').toast('hide');
+                    $('.toastSucceed').toast('show');
+                }
             });
         });
 
@@ -101,10 +108,9 @@
         };
 
         function addToSession(datax) {
-            console.log(datax);
             $.ajax({
                 type: "POST",
-                url: window.location.origin + "/Services/BTTHService.asmx/AddSession",
+                url: window.location.origin + "/Services/BTTHService.asmx/AddB17Session",
                 data: JSON.stringify({ B17Products: datax }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

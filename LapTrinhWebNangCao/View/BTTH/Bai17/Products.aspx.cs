@@ -38,7 +38,8 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai17
             {
                 str.Append("<div class='col-sm-4 mb-3'><div class='card'><img src='../../../Assets/nhaDep1.jpg' class='card-img-top' alt=''>"
                                 + "<div class='card-body'><h5 class='card-title'>" + item.B17Name + "</h5><p class='card-text'>Nhà có sổ đỏ, chưa bán<br>"
-                                + String.Format("{0:n0}", item.B17Money) + " đ</p><button id=\"" + item.B17id + '_' + item.B17Amount + "_" + item.B17Name + "_" + item.B17Money + "\" type='button' class='btn btn-primary' data-toggle='modal' onClick=\"addCartData(this.id)\" data-target='#exampleModal'>Đặt hàng</button>"
+                                + String.Format("{0:n0}", item.B17Money) + " đ</p>"
+                                + "<button id=\"" + item.B17id + '_' + item.B17Amount + "_" + item.B17Name + "_" + item.B17Money + "\" type='button' class='btn btn-primary' data-toggle='modal' onClick=\"addCartData(this.id)\" data-target='#exampleModal'>Đặt hàng</button>"
                                 + "</div></div></div>");
             }
             b17ProductsContent.InnerHtml = str.ToString();
@@ -56,5 +57,6 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai17
             str.Append("<hr />");
             cartChangeDiv.InnerHtml = str.ToString();
         }
+
     }
 }
