@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,7 +35,20 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>CS0169</NoWarn>
+    <NoWarn>CS0169, IDE0017, IDE0059, IDE0051, IDE0044</NoWarn>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -552,7 +565,10 @@
     <Content Include="View\BTTH\Bai20\RegisterB20.aspx" />
     <Content Include="View\BTTH\Bai21\bai21.aspx" />
     <Content Include="View\BTTH\Bai22\libraryB22.aspx" />
+    <Content Include="View\BTTH\Bai23Ajax\B23ShopAJAX.aspx" />
     <Content Include="View\BTTH\Bai23\B23Shop.aspx" />
+    <Content Include="View\BTTH\Bai24\KiemDuyet.aspx" />
+    <Content Include="View\BTTH\Bai24\View.aspx" />
     <Content Include="View\Home.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -935,6 +951,13 @@
     <Compile Include="View\BTTH\Bai22\libraryB22.aspx.designer.cs">
       <DependentUpon>libraryB22.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\BTTH\Bai23Ajax\B23ShopAJAX.aspx.cs">
+      <DependentUpon>B23ShopAJAX.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTTH\Bai23Ajax\B23ShopAJAX.aspx.designer.cs">
+      <DependentUpon>B23ShopAJAX.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\BTTH\Bai23\B23Shop.aspx.cs">
       <DependentUpon>B23Shop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -945,6 +968,22 @@
     <Compile Include="View\BTTH\Bai23\pagingAlgorithmClass.cs" />
     <Compile Include="View\BTTH\Bai23\phoneData.cs" />
     <Compile Include="View\BTTH\Bai23\producerB23.cs" />
+    <Compile Include="View\BTTH\Bai24\B24NewsContent.cs" />
+    <Compile Include="View\BTTH\Bai24\KiemDuyet.aspx.cs">
+      <DependentUpon>KiemDuyet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTTH\Bai24\KiemDuyet.aspx.designer.cs">
+      <DependentUpon>KiemDuyet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\BTTH\Bai24\NewsHeaderB24.cs" />
+    <Compile Include="View\BTTH\Bai24\View.aspx.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTTH\Bai24\View.aspx.designer.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

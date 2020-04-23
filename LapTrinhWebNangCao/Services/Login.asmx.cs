@@ -26,12 +26,6 @@ namespace LapTrinhWebNangCao.Services
         SqlConnection con = new SqlConnection(connStr);
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
-        [WebMethod]
         public string UserLogin(string username, string password)
         {
             string x = "";
@@ -42,7 +36,7 @@ namespace LapTrinhWebNangCao.Services
             un.Value = username;
             con.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
-            var hashedPassword = hashString(password).ToLower();
+            var hashedPassword = HashString(password).ToLower();
             while (rdr.Read())
             {
                 x = (rdr["password"].ToString());
@@ -60,7 +54,7 @@ namespace LapTrinhWebNangCao.Services
         }
 
         [WebMethod(EnableSession = true)]
-        public void createSession(string username, string password)
+        public void CreateSession(string username, string password)
         {
             string role = "";
             string x = "";
@@ -70,7 +64,7 @@ namespace LapTrinhWebNangCao.Services
             un.Value = username;
             con.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
-            var hashedPassword = hashString(password).ToLower();
+            var hashedPassword = HashString(password).ToLower();
             while (rdr.Read())
             {
                 x = (rdr["password"].ToString());
@@ -86,16 +80,16 @@ namespace LapTrinhWebNangCao.Services
                 return;
         }
 
-        private string hashString(string input)
+        private string HashString(string input)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (byte b in getHash(input))
+            foreach (byte b in GetHash(input))
                 sb.Append(b.ToString("X2"));
 
             return sb.ToString();
         }
 
-        private byte[] getHash(string inputString)
+        private byte[] GetHash(string inputString)
         {
             using (HashAlgorithm algorithm = SHA256.Create())
                 return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));

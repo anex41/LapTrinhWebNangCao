@@ -108,7 +108,7 @@
         function getLoaiSachData() {
             $.ajax({
                 type: "POST",
-                url: window.location.origin + "/Services/BTTHService.asmx/getB22LoaiSach",
+                url: window.location.origin + "/Services/BTTHService.asmx/GetB22LoaiSach",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -129,7 +129,7 @@
             let data = { "id": value.split("_")[1] };
             $.ajax({
                 type: "POST",
-                url: window.location.origin + "/Services/BTTHService.asmx/getB22Sach",
+                url: window.location.origin + "/Services/BTTHService.asmx/GetB22Sach",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

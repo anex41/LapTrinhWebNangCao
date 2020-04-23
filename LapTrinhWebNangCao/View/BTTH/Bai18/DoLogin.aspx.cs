@@ -22,47 +22,47 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai18
                 failedLoginDetail obj = Session["failedLogin"] as failedLoginDetail;
                 if (obj.LockFlag == true && obj.TimeOut > DateTime.Now)
                 {
-                    addExtraTime();
+                    AddExtraTime();
                     Session["flag"] = false;
                     Response.Redirect("Login.aspx");
                 }
                 else
                 {
-                    doLogin();
+                    DoLoginB18();
                 }
             }
             else
             {
-                doLogin();
+                DoLoginB18();
             }
         }
 
-        private void doLogin()
+        private void DoLoginB18()
         {
-            if (validateField(username, password))
+            if (ValidateField(username, password))
             {
                 if (username == "admin1" && password == "admin100")
                 {
-                    addSucceedList(username);
+                    AddSucceedList(username);
                     Session["flag"] = true;
                     Response.Redirect("Login.aspx");
                 }
                 else
                 {
-                    Session["failedLogin"] = addFailedList();
+                    Session["failedLogin"] = AddFailedList();
                     Session["flag"] = false;
                     Response.Redirect("Login.aspx");
                 }
             }
             else
             {
-                Session["failedLogin"] = addFailedList();
+                Session["failedLogin"] = AddFailedList();
                 Session["flag"] = false;
                 Response.Redirect("Login.aspx");
             }
         }
 
-        private bool validateField(string a, string b)
+        private bool ValidateField(string a, string b)
         {
             bool result = true;
             if (a.Length < 6 || a.Length > 12 || b.Length < 6 || b.Length > 12)
@@ -72,7 +72,7 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai18
             return result;
         }
 
-        private failedLoginDetail addFailedList()
+        private failedLoginDetail AddFailedList()
         {
             failedLoginDetail obj = new failedLoginDetail();
             if (Session["failedLogin"] != null)
@@ -98,7 +98,7 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai18
             return obj;
         }
 
-        private void addSucceedList(string u)
+        private void AddSucceedList(string u)
         {
             List<succeedLoginDetail> dt;
             if (Session["successLogin"] != null)
@@ -116,7 +116,7 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai18
             Session["successLogin"] = dt;
         }
 
-        private void addExtraTime()
+        private void AddExtraTime()
         {
             failedLoginDetail obj = Session["failedLogin"] as failedLoginDetail;
             obj.Strike = 0;

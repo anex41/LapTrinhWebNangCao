@@ -93,7 +93,8 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <asp:Button CausesValidation="false" ID="b21CancelBtn" runat="server" CssClass="btn btn-outline-danger float-right ml-3" Text="Hủy" OnClick="b21CancelBtn_Clicked" />
-                                    <asp:Button ID="b21SubmitBtn" ClientIDMode="static" runat="server" CssClass="btn btn-success float-right" Text="Thực hiện" OnClick="b21SubmitBtn_Clicked" />
+                                    <asp:Button hidden ID="b21SubmitBtn" ClientIDMode="static" runat="server" CssClass="btn btn-success float-right" OnClick="b21SubmitBtn_Clicked" />
+                                    <button type="button" id="confirmSubmit" class="btn btn-success">Thực hiện</button>
                                     <%--<input style="float: right;" class="btn btn-outline-danger mx-3" type="reset" value="Hủy" />--%>
                                     <%--<button style="float: right;" type="button" class="btn btn-success">Thực hiện</button>--%>
                                     <%--<asp:Button ID="btnSubmit" runat="server" Text="Thực hiện" OnClick="btnSubmit_Click" OnClientClick="return myFunction();" />--%>
@@ -126,6 +127,14 @@
             });
             $("#inputDate").on("drop", function (e) {
                 e.preventDefault();
+            });
+            $("#confirmSubmit").on("click", function () {
+                var x = confirm("Xác nhận thực hiện ?");
+                if (x) {
+                    $("#b21SubmitBtn").click();
+                } else {
+                    return false;
+                }
             });
         });
         function changeDate() {

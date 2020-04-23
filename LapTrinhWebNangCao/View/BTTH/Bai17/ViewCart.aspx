@@ -64,7 +64,7 @@
                 let data = { "id": currentID };
                 $.ajax({
                     type: "POST",
-                    url: window.location.origin + "/Services/BTTHService.asmx/deleteB17Data",
+                    url: window.location.origin + "/Services/BTTHService.asmx/DeleteB17Data",
                     data: JSON.stringify(data),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -85,7 +85,7 @@
             let data = { "id": currentID, "amount": number };
             $.ajax({
                 type: "POST",
-                url: window.location.origin + "/Services/BTTHService.asmx/editB17Data",
+                url: window.location.origin + "/Services/BTTHService.asmx/EditB17Data",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

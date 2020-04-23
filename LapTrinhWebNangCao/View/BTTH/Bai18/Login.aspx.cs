@@ -16,16 +16,16 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai18
             {
                 if (bool.Parse(Session["flag"].ToString()))
                 {
-                    showSucceedLoginList();
+                    ShowSucceedLoginList();
                 }
                 else
                 {
-                    showFailedLoginList();
+                    ShowFailedLoginList();
                 }
             }
         }
 
-        private void showSucceedLoginList()
+        private void ShowSucceedLoginList()
         {
             StringBuilder str = new StringBuilder();
             List<succeedLoginDetail> dt = Session["successLogin"] as List<succeedLoginDetail>;
@@ -36,7 +36,7 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai18
             LoginDetail.InnerHtml = str.ToString();
         }
 
-        private void showFailedLoginList()
+        private void ShowFailedLoginList()
         {
             failedLoginDetail obj = Session["failedLogin"] as failedLoginDetail;
             if (obj.LockFlag == true)

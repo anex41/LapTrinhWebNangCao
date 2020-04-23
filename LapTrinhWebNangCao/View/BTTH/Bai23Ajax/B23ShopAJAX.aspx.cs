@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace LapTrinhWebNangCao
+namespace LapTrinhWebNangCao.View.BTTH.Bai23_Ajax
 {
-    public partial class _Default : Page
+    public partial class B23ShopAJAX : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
     }
 }

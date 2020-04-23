@@ -120,12 +120,20 @@
                     <a href="./BTTH/Bai23/B23Shop.aspx" class="card-link">Đến Bài 23</a>
                 </div>
             </div>
+            <div class="card col-sm-4 divAll" id="divBai23ajax">
+                <div class="card-body">
+                    <h5 class="card-title">Bài 23 AJAX</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Bài tập tuần 6</h6>
+                    <p class="card-text">ADO.NET & DataBound Controls</p>
+                    <a href="./BTTH/Bai23Ajax/B23ShopAJAX.aspx" class="card-link">Đến Bài 23</a>
+                </div>
+            </div>
             <div class="card col-sm-4 divAll" id="divBai24">
                 <div class="card-body">
                     <h5 class="card-title">Bài 24</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Bài tập tuần 6</h6>
                     <p class="card-text">ADO.NET & DataBound Controls</p>
-                    <a href="./BTTH/Bai20/registerB20.aspx" class="card-link">Đến Bài 24</a>
+                    <a href="./BTTH/Bai24/KiemDuyet.aspx" class="card-link">Đến Bài 24</a>
                 </div>
             </div>
         </div>

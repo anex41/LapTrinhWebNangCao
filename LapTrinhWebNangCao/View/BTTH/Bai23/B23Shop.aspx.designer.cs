@@ -33,22 +33,31 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai23
         protected global::System.Web.UI.WebControls.DropDownList producerList;
 
         /// <summary>
-        /// txtSPrice control.
+        /// inputSPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSPrice;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputSPrice;
 
         /// <summary>
-        /// txtEPrice control.
+        /// inputEPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEPrice;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputEPrice;
+
+        /// <summary>
+        /// refreshPriceButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton refreshPriceButton;
 
         /// <summary>
         /// serachB23 control.
@@ -76,6 +85,42 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai23
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pageButton;
+
+        /// <summary>
+        /// pageInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pageInput;
+
+        /// <summary>
+        /// inputPageValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl inputPageValue;
+
+        /// <summary>
+        /// noPageFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noPageFound;
+
+        /// <summary>
+        /// pageValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText pageValue;
 
         /// <summary>
         /// changePage control.

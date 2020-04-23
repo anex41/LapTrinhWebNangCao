@@ -6,7 +6,7 @@
         </div>
         <div class="col-sm-8 input-group">
             <%--<asp:TextBox CssClass="form-control" ID="txtName" runat="server"></asp:TextBox>--%>
-            <input type="text" id="txtName" class="form-control">
+            <input type="text" id="txtName" class="form-control"/>
         </div>
         <div class="offset-sm-4 col-sm-8 text-center text-danger">
             <span id="txtNameLength">Độ dài chỉ trong khoảng 6 đến 12 ký tự</span>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-8 input-group">
             <%--<asp:TextBox CssClass="form-control" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>--%>
-            <input type="text" id="txtPassword" class="form-control">
+            <input type="text" id="txtPassword" class="form-control"/>
         </div>
         <div class="offset-sm-4 col-sm-8 text-center text-danger">
             <span id="txtPasswordLength">Độ dài chỉ trong khoảng 6 đến 12 ký tự</span>
@@ -50,7 +50,7 @@
                         dataType: "json",
                         success: function (response) {
                             if (response.d == null) {
-                                $('#exampleModal').modal('hide')
+                                $('#exampleModal').modal('hide');
                                 $('.toastError').toast('show');
                             }
                             else {
@@ -124,7 +124,7 @@
     function createSession(obj, str) {
         $.ajax({
             type: "POST",
-            url: window.location.origin + "/Services/Login.asmx/createSession",
+            url: window.location.origin + "/Services/Login.asmx/CreateSession",
             data: JSON.stringify(obj),
             contentType: "application/json; charset=utf-8",
             dataType: "json"

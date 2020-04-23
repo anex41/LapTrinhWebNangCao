@@ -29,6 +29,7 @@
         case "6":
             $(".divAll").hide();
             $("#divBai23").show();
+            $("#divBai23ajax").show();
             $("#divBai24").show();
             break;
         case "all":
