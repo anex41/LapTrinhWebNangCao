@@ -9,23 +9,11 @@
                 Thay đổi trong giỏ hàng
             </div>
             <div class="col-sm-9 container-fluid bg-secondary">
-                <div id="b17ProductsContent" clientidmode="Static" class="row" runat="server">
+                <div id="b17ProductsContent" class="row" runat="server">
                 </div>
             </div>
         </div>
-        <div class="toastParent position-fixed d-flex flex-column p-4" style="z-index: 1; top: 0; width: 25vw; right: 0;">
-            <div class="toast bg-success text-white toastSucceed" role="alert" data-delay="5000" data-autohide="true">
-                <div class="toast-header">
-                    <strong class="mr-auto text-success">Thành công</strong>
-                    <%--<small class="text-muted">3 mins ago</small>--%>
-                    <%--<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>--%>
-                </div>
-                <div class="toast-body">Thành công!</div>
-            </div>
-        </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -54,7 +42,7 @@
     </div>
     <div style="position: fixed; bottom: 0; left: 0;" class="col-sm-3">
         <form action="ViewCart.aspx">
-            <input hidden id="AddToCartParameter" name="AddToCartParameter" value=""/>
+            <input hidden id="AddToCartParameter" name="AddToCartParameter" value="" />
             <input class="btn btn-success d-block m-auto" id="Button1Submit" type="submit" value="Xác nhận giỏ hàng" name="send" />
         </form>
     </div>
@@ -63,17 +51,16 @@
         var lstObj = [];
         var tempObj = {};
         $(document).ready(function () {
+            appendParent();
             $("#txtbtn").on("click", function () {
                 if ($("#productAmount").val() == null || $("#productAmount").val() == "") {
-                    $('.toastSucceed').toast('hide');
-                    $('.toastError').toast('show');
+                    showToast("error", "Thất bại", "Đã có lỗi khi thực hiện !");
                 }
                 else {
                     obj.amount = $("#productAmount").val();
                     addToLst(obj);
                     addToSession(lstObj);
-                    $('.toastError').toast('hide');
-                    $('.toastSucceed').toast('show');
+                    showToast("succeed", "Thành công", "Đã thực hiện thành công !");
                 }
             });
         });
@@ -83,7 +70,7 @@
             if (lstObj.length > 0) {
                 lstObj.forEach(function (item) {
                     if (item.B17id == parseInt(obj.id)) {
-                        item.B17Amount++;
+                        item.B17Amount += parseInt(obj.amount);
                         flag = false;
                     };
                 });
@@ -97,7 +84,6 @@
                 tempValue.B17Money = parseFloat(obj.price);
                 lstObj.push(tempValue);
             }
-
         }
 
         function addCartData(id) {

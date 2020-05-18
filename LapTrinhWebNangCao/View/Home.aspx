@@ -143,10 +143,12 @@
             $("#btnBTL").on("click", function () {
                 console.log("btl");
             });
+
             $("#btnBTTH").on("click", function () {
                 $("#sectionBTTH").removeAttr('hidden');
                 $("#sectionBTTH").show();
             });
+
             $("#closeBTTH").on("click", function () {
                 $("#sectionBTTH").hide();
             });

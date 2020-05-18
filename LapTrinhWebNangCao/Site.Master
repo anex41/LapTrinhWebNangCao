@@ -45,19 +45,8 @@
         <hr style="background-color: black;" />
         &copy; <%: DateTime.Now.Year %> - My ASP.NET Application
     </footer>--%>
-    <div class="toastParent position-absolute w-25 d-flex flex-column p-4" style="top: 0;">
-        <div class="toast ml-auto bg-danger text-white toastError w-100" role="alert" data-delay="5000" data-autohide="true">
-            <div class="toast-header">
-                <strong class="mr-auto text-danger">Lỗi</strong>
-                <%--<small class="text-muted">3 mins ago</small>--%>
-                <%--<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>--%>
-            </div>
-            <div class="toast-body">Có lỗi xảy ra!</div>
-        </div>
-    </div>
     <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/toastController.js" type="text/javascript"></script>
 </body>
 </html>

@@ -535,6 +535,7 @@
     <Content Include="Scripts\jquery.signalR-2.4.1.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\switchBTTHLesson.js" />
+    <Content Include="Scripts\toastController.js" />
     <Content Include="Services\BTTHService.asmx" />
     <Content Include="Services\contentManagerService.asmx" />
     <Content Include="Services\Login.asmx" />

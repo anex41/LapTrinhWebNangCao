@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="text-primary text-center">Danh sách các vật phẩm đã chọn</h3>
-                <div id="contentDiv" runat="server" class="row p-3">
+                <div id="contentDiv" clientidmode="Static" runat="server" class="row p-3">
                 </div>
             </div>
         </div>
@@ -51,10 +51,10 @@
     <script>
         var currentID = "";
         $(document).ready(function () {
+            appendParent();
             $("#editBtn").on("click", function () {
                 if ($("#productAmount").val() == null || $("#productAmount").val() == "") {
-                    $('.toastSucceed').toast('hide');
-                    $('.toastError').toast('show');
+                    showToast("error", "Thất bại", "Đã có lỗi khi thực hiện !");
                 }
                 else {
                     sendFixedData($("#productAmount").val());
@@ -73,8 +73,7 @@
                             location.reload();
                         }
                         else {
-                            $('.toastSucceed').toast('hide');
-                            $('.toastError').toast('show');
+                            showToast("error", "Thất bại", "Đã có lỗi khi thực hiện !");
                         }
                     }
                 });
