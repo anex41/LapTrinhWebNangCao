@@ -18,7 +18,7 @@ var idNumber = 0;
 
 function appendParent() {
     let elem = document.createElement('div');
-    elem.style.cssText = 'top: 0; width: 25vw; right: 0;';
+    elem.style.cssText = 'z-index: 9999; top: 0; width: 25vw; right: 0;';
     elem.classList.add("toastParent", "position-fixed", "d-flex", "flex-column");
     elem.id = "parentToast";
     elem.innerHTML = "";

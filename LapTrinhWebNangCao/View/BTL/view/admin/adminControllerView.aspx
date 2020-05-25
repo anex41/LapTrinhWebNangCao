@@ -20,16 +20,6 @@
             <p class="card-text">Chỉnh sửa những nội dung hiển thị trên trang web</p>
             <button type="button" id="contentManager" class="btn btn-primary">Chuyển đến chức năng quản lý nội dung</button>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
     </div>
     <script>
         $(document).ready(function () {

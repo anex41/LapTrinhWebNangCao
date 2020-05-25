@@ -6,24 +6,17 @@
             <div class="col-sm-3">
             </div>
             <div class="col-sm-9">
-                <h3 class="text-primary text-center">Nội dung Trang web</h3>
-                <textarea cols="80" rows="10" id="content" name="content"> </textarea>
-                <button id="saveCKData" class="btn btn-success" type="button">Lưu</button>
+                <div class="row">
+                    <h3 class="text-primary text-center col-sm-12">Nội dung Trang web</h3>
+                    <textarea class="col-sm-12" cols="80" rows="10" id="content" name="content"> </textarea>
+                    <div class="col-sm-12 text-center py-3">
+                        <button id="saveCKData" class="btn btn-success w-25" type="button">Lưu</button>
+                        <button id="cacelCKData" class="btn btn-outline-danger w-25" type="button">Hủy</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="toastParent position-fixed d-flex flex-column p-4" style="z-index: 1; top: 0; width: 25vw; right: 0;">
-            <div class="toast bg-success text-white toastSucceed" role="alert" data-delay="5000" data-autohide="true">
-                <div class="toast-header">
-                    <strong class="mr-auto text-success">Thành công</strong>
-                    <%--<small class="text-muted">3 mins ago</small>--%>
-                    <%--<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>--%>
-                </div>
-                <div class="toast-body">Thành công!</div>
-            </div>
-        </div>
     <script type="text/javascript" src="/../../../../Scripts/ckeditor/ckeditor.js"></script>
     <script>
         $(document).ready(function () {

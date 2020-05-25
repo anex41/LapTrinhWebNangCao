@@ -4,6 +4,10 @@ CREATE TABLE tblUser (
     id int NOT NULL identity(1,1),
     username varchar(50) NOT NULL,
     password varchar(256)  NOT NULL,
+	displayName nvarchar(50) NOT NULL,
+	phoneNumber varchar(12) NOT NULL,
+	email varchar(50) NOT NULL,
+	statusFlag int NOT NULL,
 	role int NOT NULL
 );
 
@@ -12,10 +16,11 @@ CREATE TABLE tblUser (
 CREATE PROCEDURE getUser
 @username varchar(50)
 AS
-select * from tblUser where @username = tblUser.username
+select top 1 * from tblUser where @username = tblUser.username
 
-exec getUser @username='admin'
-select * from tblUser
+exec getUser @username='user1'
+
+drop proc getUser
 
 /* lấy all client */
 
@@ -29,12 +34,40 @@ exec getClient
 
 create proc createNewClient
 @username varchar(50),
-@password varchar(256)
+@password varchar(256),
+@displayName nvarchar(50),
+@phoneNumber varchar(12),
+@email varchar(50)
 as
-INSERT INTO tblUser
-VALUES (@username, @password, 0);
+if EXISTS (SELECT username FROM tblUser WHERE tblUser.username = @username)
+	return 0;
+else 
+	INSERT INTO tblUser
+	VALUES (@username, @password, 0, N@displayName, @phoneNumber, @email, 0)
+	return 1;
 
-exec createNewClient @username='user2', @password='94b51c86cc51ecdedd2a448aa6792c704a93f86f70fc3dd4f4bdc2eabfb16752'
+DECLARE @return_status int;  
+exec @return_status = createNewClient @username='user2', @password='d756ac3191464e6e1f97d240635ceaba6d15d437811f4d06eb0508027357103a', @displayName = N'Người dùng 2', @phoneNumber='083xxxxxxx', @email='user2@xmail.com'
+SELECT 'Return Status' = @return_status;  
+
+drop proc createNewClient
+
+/* Kiểm tra tên tài khoản (Client)*/
+
+create proc checkUserName
+@username varchar(50)
+as
+if EXISTS (SELECT username FROM tblUser WHERE tblUser.username = @username)
+	return 1;
+else 
+	return 0;
+
+
+DECLARE @return_status int;  
+exec @return_status = checkUserName @username='user3'
+SELECT 'Return Status' = @return_status;
+
+drop proc checkUserName
 
 /* Tạo ckEditorData*/
 
