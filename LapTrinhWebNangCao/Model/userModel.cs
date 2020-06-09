@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LapTrinhWebNangCao.Model
 {
-    public class userModel
+    public class UserModel
     {
         private int id;
         private string username;
@@ -25,9 +25,9 @@ namespace LapTrinhWebNangCao.Model
         public int Statusflag { get; set; }
         public int Role { get; set; }
 
-        public userModel() { }
+        public UserModel() { }
 
-        public userModel(int id, string username, string password, string displayname, string phonenumber, string email, int statusflag, int role)
+        public UserModel(int id, string username, string password, string displayname, string phonenumber, string email, int statusflag, int role)
         {
             Id = id;
             Username = username;

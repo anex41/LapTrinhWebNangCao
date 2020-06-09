@@ -10,30 +10,31 @@ using System.Web.Services;
 namespace LapTrinhWebNangCao.Services
 {
     /// <summary>
-    /// Summary description for contentManagerService
+    /// Summary description for ContentManagerSevices
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [System.Web.Script.Services.ScriptService]
-    public class contentManagerService : System.Web.Services.WebService
+    public class ContentManagerSevices : System.Web.Services.WebService
     {
+
         static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         SqlConnection con = new SqlConnection(connStr);
 
         [WebMethod]
-        public bool addWebContent(string identity, string content, bool activateFlagValue)
+        public bool AddContent(string idvalue, string contentStr, bool FlagValue)
         {
             bool flag = true;
             SqlCommand cmd = new SqlCommand("addCkEditorContent", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter id = cmd.Parameters.Add("id", SqlDbType.VarChar, 20);
-            id.Value = identity;
+            id.Value = idvalue;
             SqlParameter textContent = cmd.Parameters.Add("textContent", SqlDbType.NText);
-            textContent.Value = content;
+            textContent.Value = contentStr;
             SqlParameter activateFlag = cmd.Parameters.Add("activateFlag", SqlDbType.Bit);
-            activateFlag.Value = activateFlagValue;
+            activateFlag.Value = FlagValue;
             con.Open();
             var result = cmd.ExecuteNonQuery();
             con.Close();

@@ -9,8 +9,8 @@
     </div>
     <div class="col-sm-12 mb-1">
         <div class="form-group">
-            <label for="exampleFormControlInput1">Địa chỉ Email</label>
-            <input type="email" class="form-control" id="chatEmail">
+            <label for="exampleFormControlInput1">Số điện thoại</label>
+            <input type="text" class="form-control" id="chatPhone">
         </div>
     </div>
     <div class="text-right">
@@ -43,21 +43,39 @@
     $(document).ready(function () {
         var name;
         var message;
+        var adminAvailableFlag = true;
         var role = "clientChat";
         var chat = $.connection.MyHub;
 
-        chat.client.addChatMessage = function (name, message, role, email) {
-            message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            $('#chatContent').append("<div class=\"w-100 mt-1 " + role + "Parent\"><div class=\"" + role + "Child\">" + message + "</div></div>");
-            $('#bottomChatContent').remove();
-            $('#chatContent').append("<div id=\"bottomChatContent\"></div>");
-            divscrolldown();
+        chat.client.addChatMessage = function (name, message, role, phone) {
+            if (adminAvailableFlag) {
+                message = message.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                $('#chatContent').append("<div class=\"w-100 mt-1 " + role + "Parent\"><div class=\"" + role + "Child\">" + message + "</div></div>");
+                $('#bottomChatContent').remove();
+                $('#chatContent').append("<div id=\"bottomChatContent\"></div>");
+                divscrolldown();
+            } else {
+                return;
+            };
         };
 
+
         $("#open").on("click", function () {
+            chat.server.checkOnlineAdmin(); 
+        });
+
+        // call when no admin online
+        chat.client.noAdminOnline = function noAdmin() {
+            adminAvailableFlag = false;
+            showInfoToast("Thông báo", "Hiện tại không có nhân viên online để trợ giúp bạn!");
+        };
+
+        // call when admin online
+        chat.client.adminOnline = function noAdmin() {
+            adminAvailableFlag = true;
             $("#open").hide();
             $('#registerClientDiv').removeAttr('hidden');
-        });
+        };
 
         //chat.client.broadcastMessage = function (name, message, role) {
         //    // Add the message to the page.
@@ -76,7 +94,7 @@
                 message = $('#messageContent').val();
                 if (message.length > 0 || message !== null) {
                     // Call the Send method on the hub.
-                    chat.server.sendMessage(name, message, role, email);
+                    chat.server.sendMessage(name, message, role, phone);
                     // Clear text box and reset focus for next comment.
                     $('#messageContent').val('').focus();
                     //divscrolldown();
@@ -87,17 +105,19 @@
                 }
             });
 
+            // set up roomchat
             $("#setClient").on("click", function () {
                 $('#chatClientName').html("Người dùng: " + $('#chatName').val());
                 name = $('#chatName').val();
-                email = $('#chatEmail').val();
+                phone = $('#chatPhone').val();
                 $("#registerClientDiv").hide();
                 $('#chatClientDiv').removeAttr('hidden');
-                chat.server.join(email);
+                chat.server.join(phone);
             });
         });
     });
 
+    //scroll down chat list
     function divscrolldown() {
         var bottomDiv = document.getElementById("bottomChatContent");
         bottomDiv.scrollIntoView({ behavior: "smooth" });

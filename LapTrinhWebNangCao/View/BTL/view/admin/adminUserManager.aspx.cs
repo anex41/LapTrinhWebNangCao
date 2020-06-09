@@ -14,10 +14,10 @@ namespace LapTrinhWebNangCao.View.BTL.view.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            userService us = new userService();
-            List<userModel> uml = us.GetClient();
+            UserService us = new UserService();
+            List<UserModel> uml = us.GetClient();
             StringBuilder str = new StringBuilder();
-            foreach (userModel item in uml)
+            foreach (UserModel item in uml)
             {
                 str.Append("<div class=\"card col-sm-4 userCard\"><img class=\"card-img-top w-75\" style=\"align-self: center;\" src=\"/../../../../Assets/autoUser.png\" alt=''>"
                     + "<div class=\"card-body\"><h5 class=\"card-title text-center\">" + item.Displayname + "</h5>"

@@ -21,11 +21,11 @@
     <script>
         $(document).ready(function () {
             $("#saveCKData").on("click", function () {
-                //console.log(CKEDITOR.instances.content.getData());
-                let data = { "identity": "introduction", "content": CKEDITOR.instances.content.getData(), "activateFlagValue": true };
+                //console.log(typeof (CKEDITOR.instances.content.getData()));
+                let data = { "idvalue": "introduction", "contentStr": CKEDITOR.instances.content.getData(), "FlagValue": true };
                 $.ajax({
                     type: "POST",
-                    url: window.location.origin + "/Services/contentManagerService.asmx/addWebContent",
+                    url: window.location.origin + "/Services/ContentManagerSevices.asmx/AddContent",
                     data: JSON.stringify(data),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",

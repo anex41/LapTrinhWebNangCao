@@ -34,71 +34,74 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 80px;">
-            <div class="container-fluid">
-                <img class="" style="width: 5%;" src="/../../Assets/logo.png" />
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+    </form>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 80px;">
+        <div class="container-fluid">
+            <img class="" style="width: 5%;" src="/../../Assets/logo.png" />
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-white" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Trang chủ</a>
+                    </li>
+                </ul>
+            </div>
+            <div runat="server" id="logoutDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
+                <button id="logoutBtn" type="button" class="btn btn-outline-danger my-sm-0">
+                    Log Out
                 </button>
-                <div class="collapse navbar-collapse text-white" id="navbarResponsive">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Trang chủ</a>
-                        </li>
-                    </ul>
-                </div>
-                <div runat="server" id="logoutDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
-                    <button type="button" class="btn btn-outline-danger my-sm-0" data-toggle="modal" data-target="#exampleModal">
-                        Logout
-                    </button>
-                </div>
-                <div runat="server" id="loginDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
-                    <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">
-                        Login
-                    </button>
-                </div>
             </div>
-        </nav>
-        <div class="container-fluid body-content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <div class="toastParent position-fixed d-flex flex-column p-4">
-            <div class="toast bg-danger text-white toastError" role="alert" data-delay="5000" data-autohide="false">
-                <div class="toast-header">
-                    <strong class="mr-auto text-danger">Lỗi</strong>
-                    <%--<small class="text-muted">3 mins ago</small>--%>
-                    <%--<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>--%>
-                </div>
-                <div class="toast-body">Có lỗi xảy ra!</div>
+            <div runat="server" id="loginDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
+                <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#loginModal">
+                    Log In
+                </button>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title text-center text-primary w-100" id="exampleModalLabel">Đăng nhập</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <tag:Login ID="MyLogin" runat="server" />
-                    </div>
-                    <%--<div class="modal-footer">
+    </nav>
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center text-primary w-100" id="exampleModalLabel">Đăng nhập</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <tag:Login ID="MyLogin" runat="server" />
+                </div>
+                <%--<div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Đóng</button>
                         <button type="button" class="btn btn-primary">Đăng nhập</button>
                     </div>--%>
-                </div>
             </div>
         </div>
-    </form>
+    </div>
     <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script type="text/javascript" src="/signalr/hubs"></script>
     <script type="text/javascript" src="/Scripts/toastController.js"></script>
+    <script>
+        $(document).ready(function () {
+            appendParent();
+            $("#logoutBtn").on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: window.location.origin + "/Services/Login.asmx/LogoutUser",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                }).then(res =>{
+                    window.location.href = window.location.origin + "/View/BTL/view/index";
+                });
+            });
+        });
+    </script>
 </body>
 </html>

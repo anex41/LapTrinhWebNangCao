@@ -23,21 +23,22 @@ namespace LapTrinhWebNangCao
             Clients.All.broadcastMessage(name, message, role);
         }
 
-        public void Join(string groupName)
+        public void Join(string roomname)
         {
-            if (groupName == "0ac6aeed8665fb0519dcbefe39180d3dbd4eaf8e5e6204ab9ddc5a5d75fb3605")
+            if (roomname == "0ac6aeed8665fb0519dcbefe39180d3dbd4eaf8e5e6204ab9ddc5a5d75fb3605")
             {
                 connectionID = Context.ConnectionId;
                 adminFlag = true;
             }
             if (adminFlag == true)
             {
-                Groups.Add(Context.ConnectionId, groupName);
-                Groups.Add(connectionID, groupName);
+                Groups.Add(Context.ConnectionId, roomname);
+                Groups.Add(connectionID, roomname);
             }
             else
             {
-                Groups.Add(Context.ConnectionId, groupName);
+                Clients.Caller.noAdminOnline();
+                //Groups.Add(Context.ConnectionId, groupName);
             }
         }
         public void SendMessage(string name, string message, string role, string roomname)
@@ -45,6 +46,14 @@ namespace LapTrinhWebNangCao
             //Clients.All.addContosoChatMessageToPage(name, message);
             //Clients.Caller.receiveMessage(name, message, role);
             Clients.Group(roomname).addChatMessage(name, message, role, roomname);
+        }
+
+        public void checkOnlineAdmin()
+        {
+            if (!adminFlag)
+                Clients.Caller.noAdminOnline();
+            else
+                Clients.Caller.adminOnline();
         }
     }
 }

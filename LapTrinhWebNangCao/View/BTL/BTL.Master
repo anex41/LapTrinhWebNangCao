@@ -62,9 +62,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="market" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mua / Bán
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="market">
-                                <a class="dropdown-item" href="#">Mua Nhà</a>
-                                <a class="dropdown-item" href="#">Bán Nhà</a>
-                                <a class="dropdown-item" href="#">Thuê Nhà</a>
+                                <a class="dropdown-item">Mua Nhà</a>
+                                <a id="sellBtn" class="dropdown-item">Bán Nhà</a>
+                                <a class="dropdown-item">Thuê Nhà</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -88,12 +88,12 @@
                 </div>
                 <div runat="server" id="loginDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
                     <button type="button" class="btn btn-outline-primary my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">
-                        Login
+                        Log In
                     </button>
                 </div>
                 <div runat="server" id="logoutDiv" class="form-inline my-2 my-lg-0 navButton" style="justify-content: flex-end;">
-                    <button type="button" class="btn btn-outline-danger my-sm-0" data-toggle="modal" data-target="#exampleModal">
-                        Logout
+                    <button type="button" class="btn btn-outline-danger my-sm-0" id="logoutBtn">
+                        Log Out
                     </button>
                 </div>
             </div>
@@ -104,18 +104,6 @@
         </div>
         <div class="chatLayout w-25 mb-2 bg-primary text-white">
             <tag:Chat ID="chat" runat="server" />
-        </div>
-        <div class="toastParent position-fixed d-flex flex-column p-4">
-            <div class="toast bg-danger text-white toastError" role="alert" data-delay="5000" data-autohide="false">
-                <div class="toast-header">
-                    <strong class="mr-auto text-danger">Lỗi</strong>
-                    <%--<small class="text-muted">3 mins ago</small>--%>
-                    <%--<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>--%>
-                </div>
-                <div class="toast-body">Có lỗi xảy ra!</div>
-            </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -140,5 +128,23 @@
     <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="/Scripts/toastController.js"></script>
+    <script>
+        $(document).ready(function () {
+            appendParent();
+            $("#sellBtn").on("click", function () {
+                window.location.replace(window.location.origin + "/View/BTL/view/common/products");
+            });
+            $("#logoutBtn").on("click", function () {
+                $.ajax({
+                    type: "POST",
+                    url: window.location.origin + "/Services/Login.asmx/LogoutUser",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                }).then(res => {
+                    window.location.href = window.location.origin + "/View/BTL/view/index";
+                });
+            });
+        });
+    </script>
 </body>
 </html>

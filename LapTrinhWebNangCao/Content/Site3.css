@@ -4,7 +4,6 @@ html {
 }
 
 body {
-    position: relative;
     min-height: 100%;
     padding-top: 80px;
 }
@@ -44,19 +43,19 @@ footer {
 
 .chatContent {
     background-color: #cccccc;
-    height: 75vh;
+    /*height: 75vh;*/
     overflow-y: scroll;
 }
 
 .chatInput {
-    height: 10vh;
+    /*height: 10vh;*/
     background-color: #808080;
 }
 
     .chatInput textarea {
         width: 75%;
         resize: none;
-        height: 10vh;
+        /*height: 10vh;*/
     }
 
 .adminChatParent::after {

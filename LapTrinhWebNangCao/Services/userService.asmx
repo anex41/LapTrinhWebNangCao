@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" CodeBehind="userService.asmx.cs" Class="LapTrinhWebNangCao.Services.userService" %>
+﻿<%@ WebService Language="C#" CodeBehind="UserService.asmx.cs" Class="LapTrinhWebNangCao.Services.userService" %>

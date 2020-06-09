@@ -20,22 +20,22 @@ namespace LapTrinhWebNangCao.Services
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [System.Web.Script.Services.ScriptService]
-    public class userService : System.Web.Services.WebService
+    public class UserService : System.Web.Services.WebService
     {
         static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         SqlConnection con = new SqlConnection(connStr);
 
         [WebMethod]
-        public List<userModel> GetClient()
+        public List<UserModel> GetClient()
         {
-            List<userModel> uml = new List<userModel>();
+            List<UserModel> uml = new List<UserModel>();
             SqlCommand cmd = new SqlCommand("getClient", con);
             cmd.CommandType = CommandType.StoredProcedure;
             con.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                userModel um = new userModel();
+                UserModel um = new UserModel();
                 um.Id = (int)rdr["id"];
                 um.Username = (string)rdr["username"];
                 um.Displayname = (string)rdr["displayName"];
@@ -44,7 +44,7 @@ namespace LapTrinhWebNangCao.Services
                 um.Role = (int)rdr["role"];
                 um.Statusflag = (int)rdr["statusFlag"];
                 uml.Add(um);
-            }
+            };
             con.Close();
             return uml;
         }

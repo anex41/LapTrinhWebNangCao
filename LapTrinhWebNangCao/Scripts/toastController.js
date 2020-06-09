@@ -14,7 +14,9 @@ var toastBody = "</strong>"
 
 var tail = "</div></div>";
 
-var idNumber = 0;
+var idSucceedNumber = 0;
+var idErrorNumber = 0;
+var idInfoNumber = 0;
 
 function appendParent() {
     let elem = document.createElement('div');
@@ -44,32 +46,51 @@ function showToast(type, headMessage, message) {
 };
 
 function showSucceedToast(title, body) {
-
-    let succeedtoastHead = "<div class=\"toast bg-success text-white toastSucceed" + idNumber + " my-2 w-100\" role=\"alert\" data-delay=\"5000\" data-autohide=\"true\">"
-        + "<div class=\"toast-header\"> <strong class=\"mr-auto text-success\">";
-    $("#parentToast").append(succeedtoastHead + title + toastBody + body + tail);
-    $('.toastSucceed' + idNumber).toast('show');
-    if (idNumber !== 100) {
-        idNumber++;
-    } else idNumber = 0;
+    if (idSucceedNumber < 5) {
+        let succeedtoastHead = "<div class=\"toast bg-success text-white toastSucceed" + idSucceedNumber + " my-2 w-100\" role=\"alert\" data-delay=\"5000\" data-autohide=\"true\">"
+            + "<div class=\"toast-header\"> <strong class=\"mr-auto text-success\">";
+        $("#parentToast").append(succeedtoastHead + title + toastBody + body + tail);
+        $('.toastSucceed' + idSucceedNumber).toast('show');
+        idSucceedNumber++;
+    } else {
+        removeToast("toastSucceed");
+        idSucceedNumber = 0;
+        showSucceedToast(title, body);
+    };
 };
 
 function showErrorToast(title, body) {
-    let errorToastHead = "<div class=\"toast bg-danger text-white toastError" + idNumber + " my-2 w-100\" role=\"alert\" data-delay=\"5000\" data-autohide=\"true\">"
-        + "<div class=\"toast-header\"> <strong class=\"mr-auto text-danger\">";
-    $("#parentToast").append(errorToastHead + title + toastBody + body + tail);
-    $('.toastError' + idNumber).toast('show');
-    if (idNumber !== 100) {
-        idNumber++;
-    } else idNumber = 0;
+    if (idErrorNumber < 5) {
+        let errorToastHead = "<div class=\"toast bg-danger text-white toastError" + idErrorNumber + " my-2 w-100\" role=\"alert\" data-delay=\"5000\" data-autohide=\"true\">"
+            + "<div class=\"toast-header\"> <strong class=\"mr-auto text-danger\">";
+        $("#parentToast").append(errorToastHead + title + toastBody + body + tail);
+        $('.toastError' + idErrorNumber).toast('show');
+        idErrorNumber++;
+    } else {
+        removeToast("toastError");
+        idErrorNumber = 0;
+        showErrorToast(title, body)
+    };
 };
 
 function showInfoToast(title, body) {
-    let infoToastHead = "<div class=\"toast bg-info text-white toastInfo" + idNumber + " my-2 w-100\" role=\"alert\" data-delay=\"5000\" data-autohide=\"true\">"
-        + "<div class=\"toast-header\"> <strong class=\"mr-auto text-info\">";
-    $("#parentToast").append(infoToastHead + title + toastBody + body + tail);
-    $('.toastInfo' + idNumber).toast('show');
-    if (idNumber !== 100) {
-        idNumber++;
-    } else idNumber = 0;
+    if (idInfoNumber < 5) {
+        let infoToastHead = "<div class=\"toast bg-info text-white toastInfo" + idInfoNumber + " my-2 w-100\" role=\"alert\" data-delay=\"5000\" data-autohide=\"true\">"
+            + "<div class=\"toast-header\"> <strong class=\"mr-auto text-info\">";
+        $("#parentToast").append(infoToastHead + title + toastBody + body + tail);
+        $('.toastInfo' + idInfoNumber).toast('show');
+        idInfoNumber++;
+    } else {
+        removeToast("toastInfo");
+        idInfoNumber = 0;
+        showInfoToast(title, body)
+    };
+};
+
+function removeToast(str) {
+    let i = 0;
+    while (i < 5) {
+        $("." + str + i).remove();
+        i++;
+    };
 };

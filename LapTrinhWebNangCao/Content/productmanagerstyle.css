@@ -1,0 +1,34 @@
+﻿.productSideNav {
+    background-color: #343a40;
+    width: 25vw;
+    transition: all 1s;
+}
+
+.sideNavTog {
+    width: 5vw !important;
+    transition: all 1s;
+}
+
+.productContent {
+    margin-left: 25vw;
+    transition: all 1s;
+}
+
+.productContentTog {
+    margin-left: 5vw;
+    transition: all 1s;
+}
+
+.toogleButtonStyle {
+    background-color: #343a40;
+    left: 24.9vw;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    top: 80px;
+    transition: all 1s;
+}
+
+.toogleButtonTog {
+    left: 4.9vw;
+    transition: all 1s;
+}
