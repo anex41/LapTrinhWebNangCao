@@ -22,5 +22,32 @@ namespace LapTrinhWebNangCao.View.BTL.view.client
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::LapTrinhWebNangCao.View.BTL.userControl.AddProduct ProductAdd;
+
+        /// <summary>
+        /// Edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LapTrinhWebNangCao.View.BTL.userControl.EditProduct Edit;
+
+        /// <summary>
+        /// Approve control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LapTrinhWebNangCao.View.BTL.userControl.ApproveProduct Approve;
+
+        /// <summary>
+        /// Disapprove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LapTrinhWebNangCao.View.BTL.userControl.DisapproveProduct Disapprove;
     }
 }

@@ -206,7 +206,7 @@
                     let data = { "username": $("#username").val().trim() };
                     $.ajax({
                         type: "POST",
-                        url: window.location.origin + "/Services/UserService.asmx/CheckUserExistence",
+                        url: window.location.origin + "/Services/UserServices.asmx/CheckUserExistence",
                         data: JSON.stringify(data),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json"
@@ -228,7 +228,7 @@
             };
             $.ajax({
                 type: "POST",
-                url: window.location.origin + "/Services/UserService.asmx/AddNewClient",
+                url: window.location.origin + "/Services/UserServices.asmx/AddNewClient",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
@@ -245,7 +245,7 @@
         function refreshUserList() {
             $.ajax({
                 type: "POST",
-                url: window.location.origin + "/Services/UserService.asmx/GetClient",
+                url: window.location.origin + "/Services/UserServices.asmx/GetClient",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             }).then(response => {

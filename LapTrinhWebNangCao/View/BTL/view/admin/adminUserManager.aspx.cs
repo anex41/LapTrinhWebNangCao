@@ -14,7 +14,7 @@ namespace LapTrinhWebNangCao.View.BTL.view.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            UserService us = new UserService();
+            UserServices us = new UserServices();
             List<UserModel> uml = us.GetClient();
             StringBuilder str = new StringBuilder();
             foreach (UserModel item in uml)

@@ -11,7 +11,7 @@ namespace LapTrinhWebNangCao.View.BTL.view.client
 {
 
 
-    public partial class clientControllerView
+    public partial class ClientProfile
     {
 
         /// <summary>

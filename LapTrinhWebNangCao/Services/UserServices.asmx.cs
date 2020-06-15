@@ -13,15 +13,16 @@ using System.Web.Services;
 namespace LapTrinhWebNangCao.Services
 {
     /// <summary>
-    /// Summary description for userService
+    /// Summary description for UserServices
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     [System.Web.Script.Services.ScriptService]
-    public class UserService : System.Web.Services.WebService
+    public class UserServices : System.Web.Services.WebService
     {
+
         static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         SqlConnection con = new SqlConnection(connStr);
 
@@ -92,6 +93,31 @@ namespace LapTrinhWebNangCao.Services
             return flag;
         }
 
+        [WebMethod(EnableSession = true)]
+        public UserModel GetUserProfile()
+        {
+            var userName = Session["UserName"].ToString();
+            UserModel um = new UserModel();
+            SqlCommand cmd = new SqlCommand("getCurrentUserInfo", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter un = cmd.Parameters.Add("username", SqlDbType.VarChar, 50);
+            un.Value = userName;
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                um.Id = (int)rdr["id"];
+                um.Username = (string)rdr["username"];
+                um.Displayname = (string)rdr["displayName"];
+                um.Email = (string)rdr["email"];
+                um.Phonenumber = (string)rdr["phoneNumber"];
+                um.Role = (int)rdr["role"];
+                um.Statusflag = (int)rdr["statusFlag"];
+            };
+            con.Close();
+            return um;
+        }
+
         private string HashString(string input)
         {
             StringBuilder sb = new StringBuilder();
@@ -108,3 +134,4 @@ namespace LapTrinhWebNangCao.Services
         }
     }
 }
+

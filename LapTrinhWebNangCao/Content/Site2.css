@@ -97,6 +97,11 @@ button:disabled{
     overflow: hidden;
     white-space: nowrap;
 }
+
+.border-limegreen {
+    border: 1px solid limegreen !important;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {

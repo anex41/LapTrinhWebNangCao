@@ -152,6 +152,7 @@ as
 	tblCity.cityName, tblDistrict.districtName, tblUser.displayName
 	from tblProduct, tblCity, tblDistrict, tblUser
 	where tblDistrict.cityId = tblCity.cityId and tblProduct.districtId = tblDistrict.districtId and tblProduct.userId = tblUser.id
+		and tblProduct.productStatus = 1;
 
 exec getAllProducts
 
@@ -225,3 +226,118 @@ as
 		VALUES (@name, @desription, @catalog, -1 , 0, @addedDate, @price,
 		@address, @content, @district, @userid);
 	END
+
+/* Lấy sản phẩm để sửa */
+
+create proc getEditProduct
+as
+	BEGIN
+		select tblProduct.productId, tblProduct.productName, tblProduct.productDescription,
+		tblProduct.productCatalog, tblProduct.productStatus, tblProduct.productSeenNumber,
+		tblProduct.productAddedDate, tblProduct.productPrice, tblProduct.productAddress,
+		tblCity.cityName, tblDistrict.districtName, tblUser.displayName
+		from tblProduct, tblCity, tblDistrict, tblUser
+		where tblDistrict.cityId = tblCity.cityId and tblProduct.districtId = tblDistrict.districtId and tblProduct.userId = tblUser.id
+				and tblProduct.productStatus = -1
+	END
+
+exec getEditProduct
+
+create proc getEditProductById
+@identity int
+as
+	select tblProduct.productId, tblProduct.productName, tblProduct.productDescription,
+	tblProduct.productCatalog, tblProduct.productStatus, tblProduct.productSeenNumber,
+	tblProduct.productAddedDate, tblProduct.productPrice, tblProduct.productAddress,
+	tblProduct.productContent, tblCity.cityId, tblDistrict.districtId, tblUser.displayName
+	from tblProduct, tblCity, tblDistrict, tblUser
+	where tblDistrict.cityId = tblCity.cityId and tblProduct.districtId = tblDistrict.districtId and tblProduct.userId = tblUser.id
+			and tblProduct.productId = @identity and tblProduct.productStatus = -1
+
+exec getEditProductById @identity = 2
+
+/* Duyệt sản phẩm */
+
+create proc approveProduct
+@identity int
+as
+	BEGIN
+		update tblProduct
+		set tblProduct.productStatus = 1
+		where tblProduct.productId = @identity
+	END
+
+/* Hủy duyệt sản phẩm */
+
+create proc disapproveProduct
+@identity int
+as
+	BEGIN
+		update tblProduct
+		set tblProduct.productStatus = -1
+		where tblProduct.productId = @identity
+	END
+
+/* Lấy danh sách chưa duyệt */
+
+create proc getDisapproveProduct
+as
+	BEGIN
+		select tblProduct.productId, tblProduct.productName, tblProduct.productDescription,
+		tblProduct.productCatalog, tblProduct.productStatus, tblProduct.productSeenNumber,
+		tblProduct.productAddedDate, tblProduct.productPrice, tblProduct.productAddress,
+		tblProduct.productContent, tblCity.cityName, tblDistrict.districtName, tblUser.displayName
+		from tblProduct, tblCity, tblDistrict, tblUser
+		where tblDistrict.cityId = tblCity.cityId and tblProduct.districtId = tblDistrict.districtId and tblProduct.userId = tblUser.id
+			and tblProduct.productStatus = -1;
+	END
+
+drop proc getDisapproveProduct
+
+/* Lấy danh sách đã duyệt */
+
+create proc getApproveProduct
+as
+	BEGIN
+		select tblProduct.productId, tblProduct.productName, tblProduct.productDescription,
+		tblProduct.productCatalog, tblProduct.productStatus, tblProduct.productSeenNumber,
+		tblProduct.productAddedDate, tblProduct.productPrice, tblProduct.productAddress,
+		tblProduct.productContent, tblCity.cityName, tblDistrict.districtName, tblUser.displayName
+		from tblProduct, tblCity, tblDistrict, tblUser
+		where tblDistrict.cityId = tblCity.cityId and tblProduct.districtId = tblDistrict.districtId and tblProduct.userId = tblUser.id
+			and tblProduct.productStatus = 1;
+	END
+
+drop proc getApproveProduct
+
+/* sửa product */
+
+create proc editProduct
+@identity int,@name nvarchar(100),
+@desription ntext, @catalog int,
+@addedDate date, @price float, 
+@address  nvarchar(200), @content ntext,
+@district int, @userid int
+as
+	BEGIN
+		update tblProduct
+		set tblProduct.productName = @name, tblProduct.productDescription = @desription,
+			tblProduct.productCatalog = @catalog, tblProduct.productAddedDate = @addedDate,
+			tblProduct.productPrice = @price, tblProduct.productAddress = @address,
+			tblProduct.productContent = @content, tblProduct.districtID = @district,
+			tblProduct.userId = @userid, tblProduct.productStatus = -1
+		where tblProduct.productId = @identity
+	END
+
+/* lấy thông tin người dùng */
+
+create proc getCurrentUserInfo
+@username varchar(50)
+as
+	BEGIN
+		select *
+		from tblUser
+		where tblUser.username = @username
+	END
+
+drop proc getCurrentUserInfo

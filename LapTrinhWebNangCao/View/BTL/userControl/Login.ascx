@@ -5,7 +5,6 @@
             Tài khoản
         </div>
         <div class="col-sm-8 input-group">
-            <%--<asp:TextBox CssClass="form-control" ID="txtName" runat="server"></asp:TextBox>--%>
             <input type="text" id="txtName" class="form-control"/>
         </div>
         <div class="offset-sm-4 col-sm-8 text-center text-danger">
@@ -18,7 +17,6 @@
             Mật khẩu
         </div>
         <div class="col-sm-8 input-group">
-            <%--<asp:TextBox CssClass="form-control" ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>--%>
             <input type="text" id="txtPassword" class="form-control"/>
         </div>
         <div class="offset-sm-4 col-sm-8 text-center text-danger">
@@ -51,7 +49,7 @@
                         success: function (response) {
                             if (response.d == null) {
                                 $('#exampleModal').modal('hide');
-                                $('.toastError').toast('show');
+                                showErrorToast("Lỗi!","Đã có lỗi xảy ra trong quá trình đăng nhập");
                             }
                             else {
                                 createSession(data, (response.d).toString());
@@ -59,7 +57,7 @@
                         }
                     });
                 } else {
-                    $('.toastError').toast('show');
+                    showErrorToast("Lỗi!", "Đã có lỗi xảy ra trong quá trình đăng nhập");
                 }
             }
         });
@@ -117,7 +115,7 @@
         } else if (str == "0") {
             window.location.replace(window.location.origin + "/View/BTL/view/client/clientControllerView");
         } else {
-            $('.toastError').toast('show');
+            showErrorToast("Lỗi!", "Đã có lỗi xảy ra trong quá trình đăng nhập");
         }
     }
 

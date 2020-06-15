@@ -561,9 +561,13 @@
     <Content Include="Services\ContentManagerSevices.asmx" />
     <Content Include="Services\Login.asmx" />
     <Content Include="Services\ProductService.asmx" />
-    <Content Include="Services\UserService.asmx" />
+    <Content Include="Services\UserServices.asmx" />
     <Content Include="View\BTL\userControl\AddProduct.ascx" />
+    <Content Include="View\BTL\userControl\ApproveProduct.ascx" />
+    <Content Include="View\BTL\userControl\ChangePassword.ascx" />
     <Content Include="View\BTL\userControl\Chat.ascx" />
+    <Content Include="View\BTL\userControl\DisapproveProduct.ascx" />
+    <Content Include="View\BTL\userControl\EditProduct.ascx" />
     <Content Include="View\BTL\userControl\Login.ascx" />
     <Content Include="View\BTL\view\admin\adminChatController.aspx" />
     <Content Include="View\BTL\view\admin\adminContentManager.aspx" />
@@ -571,6 +575,7 @@
     <Content Include="View\BTL\view\admin\adminUserManager.aspx" />
     <Content Include="View\BTL\view\client\clientControllerView.aspx" />
     <Content Include="View\BTL\view\client\clientProductManager.aspx" />
+    <Content Include="View\BTL\view\client\ClientProfile.aspx" />
     <Content Include="View\BTL\view\common\about.aspx" />
     <Content Include="View\BTL\view\common\products.aspx" />
     <Content Include="View\BTL\view\common\productsDetail.aspx" />
@@ -768,8 +773,8 @@
       <DependentUpon>ProductService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Services\UserService.asmx.cs">
-      <DependentUpon>UserService.asmx</DependentUpon>
+    <Compile Include="Services\UserServices.asmx.cs">
+      <DependentUpon>UserServices.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\BTL\BTL.Master.cs">
@@ -786,12 +791,40 @@
     <Compile Include="View\BTL\userControl\AddProduct.ascx.designer.cs">
       <DependentUpon>AddProduct.ascx</DependentUpon>
     </Compile>
+    <Compile Include="View\BTL\userControl\ApproveProduct.ascx.cs">
+      <DependentUpon>ApproveProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTL\userControl\ApproveProduct.ascx.designer.cs">
+      <DependentUpon>ApproveProduct.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View\BTL\userControl\ChangePassword.ascx.cs">
+      <DependentUpon>ChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTL\userControl\ChangePassword.ascx.designer.cs">
+      <DependentUpon>ChangePassword.ascx</DependentUpon>
+    </Compile>
     <Compile Include="View\BTL\userControl\Chat.ascx.cs">
       <DependentUpon>Chat.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\BTL\userControl\Chat.ascx.designer.cs">
       <DependentUpon>Chat.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View\BTL\userControl\DisapproveProduct.ascx.cs">
+      <DependentUpon>DisapproveProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTL\userControl\DisapproveProduct.ascx.designer.cs">
+      <DependentUpon>DisapproveProduct.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View\BTL\userControl\EditProduct.ascx.cs">
+      <DependentUpon>EditProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTL\userControl\EditProduct.ascx.designer.cs">
+      <DependentUpon>EditProduct.ascx</DependentUpon>
     </Compile>
     <Compile Include="View\BTL\userControl\Login.ascx.cs">
       <DependentUpon>Login.ascx</DependentUpon>
@@ -848,6 +881,13 @@
     </Compile>
     <Compile Include="View\BTL\view\client\clientProductManager.aspx.designer.cs">
       <DependentUpon>clientProductManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\BTL\view\client\ClientProfile.aspx.cs">
+      <DependentUpon>ClientProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\BTL\view\client\ClientProfile.aspx.designer.cs">
+      <DependentUpon>ClientProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\BTL\view\common\about.aspx.cs">
       <DependentUpon>about.aspx</DependentUpon>

@@ -114,6 +114,8 @@
 </div>
 <script type="text/javascript" src="/../../../Scripts/ckeditor/ckeditor.js"></script>
 <script>
+    var currentProductId = 0;
+    var editFlag = false;
     CKEDITOR.replace('ckEditorTxt', {
         height: '500px',
         resize_enabled: false,
@@ -190,20 +192,42 @@
         CKEDITOR.instances.ckEditorTxt.setData("");
     };
 
-    function addProduct(t, p, ca, a, dis, des, co){
-        let data = {
-            "name": t, "des": des, "catalog": ca,
-            "date": new Date().toISOString().slice(0, 19).replace('T', ' '),
-            "price": p, "address": a, "content": co, "district": dis
+    function addProduct(t, p, ca, a, dis, des, co) {
+        if (!editFlag) {
+            let data = {
+                "name": t, "des": des, "catalog": ca,
+                "date": new Date().toISOString().slice(0, 19).replace('T', ' '),
+                "price": p, "address": a, "content": co, "district": dis
+            };
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + "/Services/ProductService.asmx/CreateNewProduct",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).then(res => {
+                showSucceedToast("Thành công!", "Đã thêm sản phẩm thành công");
+                refreshAllList();
+            });
+        } else {
+            let data = {
+                "name": t, "des": des, "catalog": ca,
+                "date": new Date().toISOString().slice(0, 19).replace('T', ' '),
+                "price": p, "address": a, "content": co, "district": dis,
+                "value": currentProductId
+            };
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + "/Services/ProductService.asmx/editProduct",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).then(res => {
+                showSucceedToast("Thành công!", "Đã sửa sản phẩm thành công");
+                refreshAllList();
+                editFlag = false;
+                toggleEditState();
+            });
         };
-        $.ajax({
-            type: "POST",
-            url: window.location.origin + "/Services/ProductService.asmx/CreateNewProduct",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json"
-        }).then(res => {
-            showSucceedToast("Thành công!", "Đã thêm sản phẩm thành công");
-        });
     };
 </script>
