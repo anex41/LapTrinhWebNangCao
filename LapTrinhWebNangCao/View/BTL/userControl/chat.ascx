@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Chat.ascx.cs" Inherits="LapTrinhWebNangCao.View.BTL.userControl.chat" %>
-<button type="button" id="open" class="btn btn-info w-100">Click here to chat with us</button>
+<button hidden type="button" id="open" class="btn btn-info w-100">Ẫn vào đây để bắt đầu trò chuyện</button>
 <div hidden id="registerClientDiv" class="p-1">
     <div class="col-sm-12 mb-1">
         <div class="form-group">

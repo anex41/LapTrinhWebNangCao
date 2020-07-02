@@ -41,16 +41,21 @@
     };
 
     function approveSelected(value) {
-        let data = { "value": "" + value };
-        $.ajax({
-            type: "POST",
-            url: window.location.origin + "/Services/ProductService.asmx/ApproveProduct",
-            data: JSON.stringify(data),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json"
-        }).then(res => {
-            showSucceedToast("Thành công", "Đã duyệt sản phẩm");
-            refreshAllList();
-        });
+        var cf = confirm("Bạn xác có xác nhận duyệt sản phẩm / bài đăng?");
+        if (cf) {
+            let data = { "value": "" + value };
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + "/Services/ProductService.asmx/ApproveProduct",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).then(res => {
+                showSucceedToast("Thành công", "Đã duyệt sản phẩm");
+                refreshAllList();
+            });
+        } else {
+            return;
+        };
     };
 </script>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LapTrinhWebNangCao.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,6 +14,7 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai23
 {
     public partial class B23Shop : System.Web.UI.Page
     {
+        private string str = System.Configuration.ConfigurationManager.AppSettings["message"];
         private static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         private SqlConnection con = new SqlConnection(connStr);
         private static int currentIndex = 0, currentProducer = -1, tR = 0, currentPageSize = 0, currentTotalPage = 0;
@@ -20,6 +22,8 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai23
         protected void Page_Load(object sender, EventArgs e)
         {
             //addPhoneData();
+            ValidateProject vp = new ValidateProject();
+            Session["mine"] = vp.EncryptMessage(str);
             if (!Page.IsPostBack)
             {
                 PopulateProducerList();

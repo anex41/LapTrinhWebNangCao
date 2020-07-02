@@ -4,7 +4,6 @@
     <div class="row m-0">
         <h1 class="col-sm-12 text-center text-primary">Danh sách sản phẩm</h1>
         <div class="col-sm-9 p-2" id="productListDiv">
-            
         </div>
         <div class="col-sm-3 border border-secondary rounded">
             filter tool

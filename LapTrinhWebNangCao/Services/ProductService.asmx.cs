@@ -290,5 +290,40 @@ namespace LapTrinhWebNangCao.Services
             SqlDataReader rdr = cmd.ExecuteReader();
             con.Close();
         }
+
+        [WebMethod]
+        public Array GetProductAlike(float priceBegin, float priceEnd, int identity)
+        {
+            List<ProductModel> pml = new List<ProductModel>();
+            SqlCommand cmd = new SqlCommand("getProductAlike", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter pb = cmd.Parameters.Add("priceBegin", SqlDbType.Float);
+            pb.Value = priceBegin;
+            SqlParameter pe = cmd.Parameters.Add("priceEnd", SqlDbType.Float);
+            pe.Value = priceEnd;
+            SqlParameter idvalue = cmd.Parameters.Add("idValue", SqlDbType.Int);
+            idvalue.Value = identity;
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                ProductModel pm = new ProductModel();
+                pm.Id = (int)rdr["productId"];
+                pm.Name = (string)rdr["productName"];
+                pm.Description = (string)rdr["productDescription"];
+                pm.Catalog = (int)rdr["productCatalog"];
+                pm.Status = (int)rdr["productStatus"];
+                pm.SeenNumber = (int)rdr["productSeenNumber"];
+                pm.AddedDate = DateTime.Parse(rdr["productAddedDate"].ToString());
+                pm.Price = float.Parse(rdr["productPrice"].ToString());
+                pm.Address = (string)rdr["ProductAddress"];
+                pm.City = (string)rdr["cityName"];
+                pm.District = (string)rdr["districtName"];
+                pm.User = (string)rdr["displayName"];
+                pml.Add(pm);
+            };
+            con.Close();
+            return pml.ToArray();
+        }
     }
 }

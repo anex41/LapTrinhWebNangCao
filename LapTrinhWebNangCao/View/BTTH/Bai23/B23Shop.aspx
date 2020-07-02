@@ -92,6 +92,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </form>
+    <%: Scripts.Render("~/bundles/modernizrr") %>
     <script>
         $(document).ready(function () {
             $("#inputPageValue").on("paste", function (e) {

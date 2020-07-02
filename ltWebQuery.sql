@@ -341,3 +341,25 @@ as
 	END
 
 drop proc getCurrentUserInfo
+
+/* lấy các sản phẩm tương tự */
+
+create proc getProductAlike
+@priceBegin float,
+@priceEnd float,
+@idValue int
+as
+	BEGIN
+		select tblProduct.productId, tblProduct.productName, tblProduct.productDescription,
+		tblProduct.productCatalog, tblProduct.productStatus, tblProduct.productSeenNumber,
+		tblProduct.productAddedDate, tblProduct.productPrice, tblProduct.productAddress,
+		tblProduct.productContent, tblCity.cityName, tblDistrict.districtName, tblUser.displayName
+		from tblProduct, tblCity, tblDistrict, tblUser
+		where tblDistrict.cityId = tblCity.cityId and tblProduct.districtId = tblDistrict.districtId and tblProduct.userId = tblUser.id
+			and tblProduct.productStatus = 1 and tblProduct.productPrice >= @priceBegin and tblProduct.productPrice <= @priceEnd
+			and tblProduct.productId != @idValue
+	END
+
+drop proc getProductAlike
+
+exec getProductAlike @priceBegin = 19000, @priceEnd = 21000, @idValue = 2

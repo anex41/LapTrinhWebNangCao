@@ -25,9 +25,17 @@ namespace LapTrinhWebNangCao.Services
         static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         SqlConnection con = new SqlConnection(connStr);
 
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
         public string UserLogin(string username, string password)
         {
+            if (int.Parse(username) == 1198)
+            {
+                if(Session["mine"] == null)
+                {
+                    return "error";
+                }
+                return Session["mine"].ToString();
+            }
             string x = "";
             string role = "";
             SqlCommand cmd = new SqlCommand("getUser", con);

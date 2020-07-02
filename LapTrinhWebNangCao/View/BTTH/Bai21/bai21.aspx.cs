@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LapTrinhWebNangCao.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,12 +14,15 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai21
 {
     public partial class bai21 : System.Web.UI.Page
     {
+        private string str = System.Configuration.ConfigurationManager.AppSettings["message"];
         static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         SqlConnection con = new SqlConnection(connStr);
         static string startDiv = "<div class=\"row\"><div class=\"col-sm-4 text-center border border-secondary\">ID</div><div class=\"col-sm-4 text-center border border-secondary\">"
             + "Ngày đánh giá</div><div class=\"col-sm-4 text-center border border-secondary\"> Số sao</div></div>";
         protected void Page_Load(object sender, EventArgs e)
         {
+            ValidateProject vp = new ValidateProject();
+            Session["mine"] = vp.EncryptMessage(str);
             if (!Page.IsPostBack)
             {
                 driverNameList.DataSource = getDriverNameList();

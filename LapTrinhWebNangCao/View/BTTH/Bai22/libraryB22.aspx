@@ -92,6 +92,7 @@
             </div>
         </div>
     </form>
+    <%: Scripts.Render("~/bundles/modernizrr") %>
     <script>
         $(document).ready(function () {
             getLoaiSachData();

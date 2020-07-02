@@ -31,8 +31,15 @@
                 Số lượt người xem: <span class="text-primary mx-1" id="objSeenNumber"></span>
             </div>
         </div>
+        <div class="col-sm-12">
+            <div id="productAlike" class="row m-0">
+                <h1 class="text-center text-primary col-sm-12">Các sản phẩm tương tự</h1>
+                <h5 class="col-sm-12">Các sản phẩm có khoảng giá tương tự</h5>
+            </div>
+        </div>
     </div>
     <script>
+        var currentProductID = null;
         $(document).ready(function () {
             getCurrentId();
         });
@@ -40,6 +47,7 @@
         function getCurrentId() {
             let currentUrl = window.location.href.split("?")[1];
             let id = decodeURIComponent(currentUrl).split("=")[1];
+            currentProductID = id;
             getProductDetail(id);
         };
 
@@ -68,6 +76,7 @@
             $("#objAddedDate").html(formatDate(obj.AddedDate).toLocaleDateString());
             $("#objUser").html(obj.User);
             $("#objSeenNumber").html(obj.SeenNumber);
+            getProductAlikeList(parseFloat(obj.Price) - 1000, parseFloat(obj.Price) + 1000);
         };
 
         function formatDate(str) {
@@ -107,6 +116,36 @@
                     return "Thuê Cửa Hàng";
                     break;
             };
+        };
+
+        function getProductAlikeList(begin, end) {
+            //$("#productAlike").append("");
+            let data = { "priceBegin": begin, "priceEnd": end, "identity": currentProductID};
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + "/Services/ProductService.asmx/GetProductAlike",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).then(res => {
+                appendProductAlikeList(res.d);
+            });
+        };
+
+        function appendProductAlikeList(arr) {
+            arr.forEach(item => {
+                $("#productAlike").append("<div class=\col-sm-3 card\">"
+                    + "<img class=\card-img-top w-100\" src=\"/../../../../Assets/nhaDep1.jpg\" alt=\"Card image cap\">"
+                    + "<div class=\"card-body\"><h5 class=\"card-title\">"+ item.Name +"</h5>"
+                    + "<p class=\"card-text\">" + item.Description +"</p>"
+                    + "<button type=\"button\" id=\"" + item.Id + "\" onclick=\"getDetailProduct(this.id)\" href=\"#\" class=\"btn btn-primary text-center\">Xem chi tiết</button>"
+                    + "</div></div>");
+            });
+        };
+
+        function getDetailProduct(value) {
+            let x = encodeURIComponent("id=" + value);
+            window.location.replace(window.location.origin + "/View/BTL/view/common/productsDetail?" + x);
         };
     </script>
 </asp:Content>

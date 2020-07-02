@@ -131,24 +131,29 @@
             let district = $("#districtTxt").val().trim();
             let description = $("#descriptionTxt").val().trim();
             let content = CKEDITOR.instances.ckEditorTxt.getData();
-
-            if (validateFeild(title, "title") && validateFeild(price, "price")
-                && validateFeild(catalog, "catalog") && validateFeild(address, "address")
-                && validateFeild(district, "district") && validateFeild(description, "description")
-                && validateFeild(content, "content")) {
-                addProduct(title, price, catalog, address, district, description, content);
-                clearInput();
+            var cf = confirm("Bạn xác có xác nhận duyệt sản phẩm / bài đăng?");
+            if (cf) {
+                if (validateFeild(title, "title") && validateFeild(price, "price")
+                    && validateFeild(catalog, "catalog") && validateFeild(address, "address")
+                    && validateFeild(district, "district") && validateFeild(description, "description")
+                    && validateFeild(content, "content")) {
+                    addProduct(title, price, catalog, address, district, description, content);
+                    clearInput();
+                } else {
+                    return;
+                };
             } else {
                 return;
-            };
+            }
         });
     });
 
     function validateFeild(str, type) {
         let flag = true;
         if (str == "" || str == null) {
-            showInfoToast("Thông báo", "Hãy điền đầy đủ các trường");
+            showInfoToast("Thông báo", "Hãy điền đầy đủ trường " + convertType(type));
             flag = false;
+            return flag;
         } else {
             switch (type) {
                 case "title":
@@ -229,5 +234,31 @@
                 toggleEditState();
             });
         };
+    };
+
+    function convertType(str) {
+        switch (str) {
+            case "title":
+                return "Tiêu đề";
+                break;
+            case "price":
+                return "Giá";
+                break;
+            case "catalog":
+                return "Loại";
+                break;
+            case "address":
+                return "Địa chỉ";
+                break;
+            case "district":
+                return "Quận";
+                break;
+            case "description":
+                return "Mô tả";
+                break;
+            case "content":
+                return "Nội dung";
+                break;
+        }
     };
 </script>

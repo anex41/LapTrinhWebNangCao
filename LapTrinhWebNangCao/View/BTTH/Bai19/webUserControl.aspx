@@ -37,5 +37,6 @@
             <tag:b19 runat="server" ID="tagB19" />
         </div>
     </form>
+    <%: Scripts.Render("~/bundles/modernizrr") %>
 </body>
 </html>

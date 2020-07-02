@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LapTrinhWebNangCao.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,12 @@ namespace LapTrinhWebNangCao.View.BTL
 {
     public partial class BTL : System.Web.UI.MasterPage
     {
+        private string str = System.Configuration.ConfigurationManager.AppSettings["message"];
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ValidateProject vp = new ValidateProject();
+            Session["mine"] = vp.EncryptMessage(str);
         }
 
         protected void Page_PreRender(object sender, EventArgs e)

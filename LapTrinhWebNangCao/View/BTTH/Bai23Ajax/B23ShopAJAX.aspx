@@ -88,6 +88,7 @@
             </div>
         </div>
     </form>
+    <%: Scripts.Render("~/bundles/modernizrr") %>
     <script>
         var currentIndex = 0, currentProducer = -1, tR = 0, currentPageSize = 0, currentTotalPage = 0, currentStartPrice = -1, currentEndPrice = -1;
         $(document).ready(function () {

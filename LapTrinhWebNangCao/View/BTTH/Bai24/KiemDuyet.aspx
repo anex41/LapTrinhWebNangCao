@@ -72,6 +72,7 @@
             </div>
         </div>
     </div>
+    <%: Scripts.Render("~/bundles/modernizrr") %>
     <script>
         $(document).ready(function () {
             getDisapprovedList(-1);

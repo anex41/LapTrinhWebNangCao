@@ -40,6 +40,9 @@ function showToast(type, headMessage, message) {
         case "info":
             showInfoToast(headMessage, message);
             break;
+        case "modal":
+            $("body").append(message);
+            break;
         default:
             break;
     };

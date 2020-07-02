@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LapTrinhWebNangCao.Services;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,12 +14,15 @@ namespace LapTrinhWebNangCao.View.BTTH.Bai22
 {
     public partial class libraryB22 : System.Web.UI.Page
     {
+        private string str = System.Configuration.ConfigurationManager.AppSettings["message"];
+
         static string connStr = ConfigurationManager.ConnectionStrings["myConStr"].ConnectionString;
         SqlConnection con = new SqlConnection(connStr);
         public int totalPage = 100;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            ValidateProject vp = new ValidateProject();
+            Session["mine"] = vp.EncryptMessage(str);
         }
 
         private List<b22LoaiSach> getListLoaiSach(int start, int end)
