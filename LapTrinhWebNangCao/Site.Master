@@ -48,6 +48,5 @@
     <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
     <script src="/Scripts/toastController.js" type="text/javascript"></script>
-    <%: Scripts.Render("~/bundles/modernizrr") %>
 </body>
 </html>

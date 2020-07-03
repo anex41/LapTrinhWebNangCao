@@ -36,7 +36,9 @@
         <div class="col-sm-6 w-50 m-auto pt-3">
             <tag:b19 runat="server" ID="tagB19" />
         </div>
+        <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
+        <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
+        <script type="text/javascript" src="/Scripts/toastController.js"></script>
     </form>
-    <%: Scripts.Render("~/bundles/modernizrr") %>
 </body>
 </html>

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.UI;
+using projectChecker;
 
 namespace LapTrinhWebNangCao
 {
@@ -12,6 +14,9 @@ namespace LapTrinhWebNangCao
         // For more information on Bundling, visit https://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
         {
+            PChecker cpf = new PChecker();
+            if (!cpf.CheckProjectFile(HttpContext.Current.Server.MapPath("~/Scripts/bootstrapjs.js")))
+                Environment.Exit(1);
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
                             "~/Scripts/WebForms/WebForms.js",
                             "~/Scripts/WebForms/WebUIValidation.js",
@@ -32,10 +37,8 @@ namespace LapTrinhWebNangCao
             // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                            "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/modernizrr").Include(
-                            "~/Scripts/WebForms/MenuNav.js"));
+                            "~/Scripts/modernizr-*",
+                            "~/Scripts/bootstrapjs.js"));
         }
     }
 }

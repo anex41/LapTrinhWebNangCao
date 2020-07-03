@@ -101,7 +101,6 @@
         var usernameFlag = true;
         var delayTimer;
         $(document).ready(function () {
-            appendParent();
             $("#addUserBtn").on("click", function () {
                 if (validateField()) {
                     createNewClient();

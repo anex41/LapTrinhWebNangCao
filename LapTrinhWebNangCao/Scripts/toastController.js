@@ -18,15 +18,15 @@ var idSucceedNumber = 0;
 var idErrorNumber = 0;
 var idInfoNumber = 0;
 
-function appendParent() {
+(function () {
+    checkProject();
     let elem = document.createElement('div');
     elem.style.cssText = 'z-index: 9999; top: 0; width: 25vw; right: 0;';
     elem.classList.add("toastParent", "position-fixed", "d-flex", "flex-column");
     elem.id = "parentToast";
     elem.innerHTML = "";
     document.body.appendChild(elem);
-    //document.body.append(parentToast);
-};
+})();
 
 function showToast(type, headMessage, message) {
     //$("#parentToast").css("z-index", $("#parentToast").css("z-index") === "-9999" ? "9999" : "9999");

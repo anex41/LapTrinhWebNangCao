@@ -72,7 +72,9 @@
             </div>
         </div>
     </div>
-    <%: Scripts.Render("~/bundles/modernizrr") %>
+    <script type="text/javascript" src="/Scripts/umd/popper.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/toastController.js"></script>
     <script>
         $(document).ready(function () {
             getDisapprovedList(-1);

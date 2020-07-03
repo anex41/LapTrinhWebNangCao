@@ -88,10 +88,8 @@
     <script type="text/javascript" src="/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script type="text/javascript" src="/signalr/hubs"></script>
     <script type="text/javascript" src="/Scripts/toastController.js"></script>
-    <%: Scripts.Render("~/bundles/modernizrr") %>
     <script>
         $(document).ready(function () {
-            appendParent();
             $("#logoutBtn").on("click", function () {
                 $.ajax({
                     type: "POST",

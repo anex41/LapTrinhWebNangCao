@@ -51,7 +51,6 @@
         var lstObj = [];
         var tempObj = {};
         $(document).ready(function () {
-            appendParent();
             $("#txtbtn").on("click", function () {
                 if ($("#productAmount").val() == null || $("#productAmount").val() == "") {
                     showToast("error", "Thất bại", "Đã có lỗi khi thực hiện !");

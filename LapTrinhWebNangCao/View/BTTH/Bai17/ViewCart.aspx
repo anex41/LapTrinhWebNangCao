@@ -51,7 +51,6 @@
     <script>
         var currentID = "";
         $(document).ready(function () {
-            appendParent();
             $("#editBtn").on("click", function () {
                 if ($("#productAmount").val() == null || $("#productAmount").val() == "") {
                     showToast("error", "Thất bại", "Đã có lỗi khi thực hiện !");
